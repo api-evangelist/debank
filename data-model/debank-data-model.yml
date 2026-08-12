@@ -1,0 +1,281 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/debank-pro-openapi.yml
+note: Entity graph derived from the 33 Swagger 2.0 definitions and their $ref links. DeBank keys every entity on
+  a chain-scoped string id (an EVM address for tokens/contracts/users, a DeBank chain slug such as eth/bsc/matic
+  for chains, and a protocol slug such as eth_aave for protocols) rather than a prefixed opaque id.
+identifiers:
+- entity: Chain
+  id_form: DeBank chain slug
+  example_field: id
+  note: e.g. eth, bsc, matic, arb
+- entity: Protocol
+  id_form: <chain>_<protocol> slug
+  example_field: id
+  note: e.g. eth_aave
+- entity: Token
+  id_form: contract address, or the chain slug for a native token
+  example_field: id
+- entity: User
+  id_form: EVM wallet address
+  example_field: id
+entity_count: 33
+entities:
+- name: App Protocol
+  fields: 5
+  source: openapi/debank-pro-openapi.yml#/definitions/App Protocol
+  id_reference_fields:
+  - id
+- name: Chain
+  fields: 7
+  source: openapi/debank-pro-openapi.yml#/definitions/Chain
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_chain
+  - get_chain_list
+  - get_user_chain_list
+- name: NetCurve
+  fields: 2
+  source: openapi/debank-pro-openapi.yml#/definitions/NetCurve
+  returned_by:
+  - get_total_chain_net_curve
+  - get_user_chain_net_curve
+- name: NewChain
+  fields: 8
+  source: openapi/debank-pro-openapi.yml#/definitions/NewChain
+  id_reference_fields:
+  - id
+- name: Pool
+  fields: 6
+  source: openapi/debank-pro-openapi.yml#/definitions/Pool
+  id_reference_fields:
+  - pool_id
+  - protocol_id
+  returned_by:
+  - get_pool
+- name: PortfolioItem
+  fields: 6
+  source: openapi/debank-pro-openapi.yml#/definitions/PortfolioItem
+  relationships:
+  - kind: has_one
+    target: stats
+    via: stats
+- name: Protocol
+  fields: 7
+  source: openapi/debank-pro-openapi.yml#/definitions/Protocol
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_protocol
+  - get_protocol_all_list
+  - get_protocol_list
+- name: Protocol2
+  fields: 4
+  source: openapi/debank-pro-openapi.yml#/definitions/Protocol2
+  id_reference_fields:
+  - id
+- name: Spenders
+  fields: 2
+  source: openapi/debank-pro-openapi.yml#/definitions/Spenders
+  relationships:
+  - kind: has_one
+    target: Protocol2
+    via: protocol
+  id_reference_fields:
+  - id
+- name: Stat
+  fields: 3
+  source: openapi/debank-pro-openapi.yml#/definitions/Stat
+- name: Token
+  fields: 12
+  source: openapi/debank-pro-openapi.yml#/definitions/Token
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_token
+  - get_token_list_by_ids
+- name: Unit
+  fields: 2
+  source: openapi/debank-pro-openapi.yml#/definitions/Unit
+  relationships:
+  - kind: has_many
+    target: Stat
+    via: stats
+  returned_by:
+  - get_unit_api_list
+- name: UserApp
+  fields: 6
+  source: openapi/debank-pro-openapi.yml#/definitions/UserApp
+  relationships:
+  - kind: has_many
+    target: PortfolioItem
+    via: portfolio_item_list
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_user_complex_app_list
+- name: UserHistory
+  fields: 4
+  source: openapi/debank-pro-openapi.yml#/definitions/UserHistory
+  relationships:
+  - kind: has_many
+    target: history_list
+    via: history_list
+  returned_by:
+  - get_user_history_all_list
+  - get_user_history_list
+- name: UserNFTAuthorized
+  fields: 3
+  source: openapi/debank-pro-openapi.yml#/definitions/UserNFTAuthorized
+  relationships:
+  - kind: has_many
+    target: nft_tokens
+    via: tokens
+  - kind: has_many
+    target: nft_contracts
+    via: contracts
+  returned_by:
+  - get_user_nft_authorized_list
+- name: UserNft
+  fields: 18
+  source: openapi/debank-pro-openapi.yml#/definitions/UserNft
+  relationships:
+  - kind: has_many
+    target: attributes
+    via: attributes
+  - kind: has_one
+    target: Protocol
+    via: protocol
+  - kind: has_one
+    target: newToken2
+    via: pay_token
+  id_reference_fields:
+  - contract_id
+  - id
+  returned_by:
+  - get_user_nft_all_list
+  - get_user_nft_list
+- name: UserProtocol
+  fields: 10
+  source: openapi/debank-pro-openapi.yml#/definitions/UserProtocol
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_user_all_complex_protocol_list
+  - get_user_complex_protocol_list
+  - get_user_protocol
+- name: UserSimpleProtocol
+  fields: 10
+  source: openapi/debank-pro-openapi.yml#/definitions/UserSimpleProtocol
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_user_all_simple_protocol_list
+  - get_user_simple_protocol_list
+- name: UserToken
+  fields: 14
+  source: openapi/debank-pro-openapi.yml#/definitions/UserToken
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_user_token
+  - get_user_token_all_list
+  - get_user_token_list
+- name: UserTokenAuthorized
+  fields: 10
+  source: openapi/debank-pro-openapi.yml#/definitions/UserTokenAuthorized
+  relationships:
+  - kind: has_many
+    target: Spenders
+    via: spenders
+  id_reference_fields:
+  - id
+  returned_by:
+  - get_user_token_authorized_list
+- name: UserTotalBalance
+  fields: 2
+  source: openapi/debank-pro-openapi.yml#/definitions/UserTotalBalance
+  relationships:
+  - kind: has_many
+    target: NewChain
+    via: chain_list
+  returned_by:
+  - get_user_total_balance
+- name: UserUsdValue
+  fields: 1
+  source: openapi/debank-pro-openapi.yml#/definitions/UserUsdValue
+  returned_by:
+  - get_user_chain_balance
+- name: attributes
+  fields: 2
+  source: openapi/debank-pro-openapi.yml#/definitions/attributes
+- name: gasprice
+  fields: 2
+  source: openapi/debank-pro-openapi.yml#/definitions/gasprice
+  returned_by:
+  - get_gas_market
+- name: history_list
+  fields: 8
+  source: openapi/debank-pro-openapi.yml#/definitions/history_list
+  relationships:
+  - kind: has_many
+    target: receives
+    via: receives
+  - kind: has_many
+    target: sends
+    via: sends
+  - kind: has_many
+    target: token_approve
+    via: token_approve
+  - kind: has_one
+    target: tx
+    via: tx
+  id_reference_fields:
+  - id
+  - project_id
+- name: newToken2
+  fields: 13
+  source: openapi/debank-pro-openapi.yml#/definitions/newToken2
+  id_reference_fields:
+  - id
+- name: nft_contracts
+  fields: 7
+  source: openapi/debank-pro-openapi.yml#/definitions/nft_contracts
+  relationships:
+  - kind: has_many
+    target: Spenders
+    via: spenders
+  id_reference_fields:
+  - contract_id
+- name: nft_tokens
+  fields: 16
+  source: openapi/debank-pro-openapi.yml#/definitions/nft_tokens
+  relationships:
+  - kind: has_many
+    target: Spenders
+    via: spenders
+  id_reference_fields:
+  - contract_id
+  - id
+- name: receives
+  fields: 3
+  source: openapi/debank-pro-openapi.yml#/definitions/receives
+  id_reference_fields:
+  - token_id
+- name: sends
+  fields: 3
+  source: openapi/debank-pro-openapi.yml#/definitions/sends
+  id_reference_fields:
+  - token_id
+- name: stats
+  fields: 3
+  source: openapi/debank-pro-openapi.yml#/definitions/stats
+- name: token_approve
+  fields: 3
+  source: openapi/debank-pro-openapi.yml#/definitions/token_approve
+  id_reference_fields:
+  - token_id
+- name: tx
+  fields: 8
+  source: openapi/debank-pro-openapi.yml#/definitions/tx

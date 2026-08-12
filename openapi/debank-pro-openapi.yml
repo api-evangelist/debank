@@ -1,0 +1,2381 @@
+swagger: '2.0'
+basePath: /
+paths:
+  /cloud/chain/list:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_chain_list_view
+      tags:
+      - cloud
+  /cloud/collection:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_get_collection_view
+      tags:
+      - cloud
+  /cloud/contract:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_get_contract_view
+      tags:
+      - cloud
+  /cloud/protocol/list:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_protocol_list_view
+      tags:
+      - cloud
+  /cloud/token:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_get_token_view
+      tags:
+      - cloud
+  /v1/account/units:
+    get:
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Unit'
+        '400':
+          description: Invalid account
+      operationId: get_unit_api_list
+      tags:
+      - Account
+  /v1/app_protocol/list:
+    get:
+      responses:
+        '200':
+          description: return app protocol list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/App%20Protocol'
+      description: Get list of apps on supported app chains
+      operationId: get_app_protocol_list
+      tags:
+      - App Protocol
+  /v1/chain:
+    get:
+      responses:
+        '200':
+          description: return chain
+          schema:
+            $ref: '#/definitions/Chain'
+      description: Get chain info by id
+      operationId: get_chain
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+        enum:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+      tags:
+      - Chain
+  /v1/chain/list:
+    get:
+      responses:
+        '200':
+          description: return chain list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Chain'
+      description: Get supported chain list
+      operationId: get_chain_list
+      tags:
+      - Chain
+  /v1/official/group_send:
+    post:
+      responses:
+        '200':
+          description: Success
+      operationId: post_group_send_api_view
+      tags:
+      - official
+  /v1/official/message/send:
+    post:
+      responses:
+        '200':
+          description: Success
+      operationId: post_message_send_api_view
+      tags:
+      - official
+  /v1/pool:
+    get:
+      responses:
+        '200':
+          description: return pool
+          schema:
+            $ref: '#/definitions/Pool'
+      operationId: get_pool
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: pool id
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: chain id
+      tags:
+      - Pool
+  /v1/protocol:
+    get:
+      responses:
+        '200':
+          description: return protocol
+          schema:
+            $ref: '#/definitions/Protocol'
+      operationId: get_protocol
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: protocol id
+      tags:
+      - Protocol
+  /v1/protocol/all_list:
+    get:
+      responses:
+        '200':
+          description: return protocol list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Protocol'
+      operationId: get_protocol_all_list
+      tags:
+      - Protocol
+  /v1/protocol/list:
+    get:
+      responses:
+        '200':
+          description: return protocol list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Protocol'
+      operationId: get_protocol_list
+      parameters:
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - Protocol
+  /v1/token:
+    get:
+      responses:
+        '200':
+          description: return token
+          schema:
+            $ref: '#/definitions/Token'
+      description: Get token by address
+      operationId: get_token
+      parameters:
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Ethereum Address or native token id
+      tags:
+      - Token
+  /v1/token/history_price:
+    get:
+      responses:
+        '200':
+          description: return token price
+          schema:
+            type: number
+      description: Get token history price by address
+      operationId: get_token_history_price
+      parameters:
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Ethereum Address or native token id
+      - name: date_at
+        in: query
+        type: string
+        required: true
+        description: date
+      tags:
+      - Token
+  /v1/token/list_by_ids:
+    get:
+      responses:
+        '200':
+          description: token list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Token'
+      description: Bulk token fetching by address
+      operationId: get_token_list_by_ids
+      parameters:
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: ids
+        in: query
+        type: array
+        required: true
+        description: List of token addresses, up to 100
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - Token
+  /v1/token/top_holders:
+    get:
+      responses:
+        '200':
+          description: return token
+      description: Get top token holders
+      operationId: get_token_top_holders
+      parameters:
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Ethereum Address or native token id
+      - name: start
+        in: query
+        type: integer
+      - name: limit
+        in: query
+        type: integer
+      tags:
+      - Token
+  /v1/user/all_complex_protocol_list:
+    get:
+      responses:
+        '200':
+          description: return the list of protocol with user's portfolio items
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserProtocol'
+      description: Get list of protocols with user portfolio details on all supported chains
+      operationId: get_user_all_complex_protocol_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/all_history_list:
+    get:
+      responses:
+        '200':
+          description: return history list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserHistory'
+      description: Get user all history list
+      operationId: get_user_history_all_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: chain_id
+        in: query
+        type: string
+        description: ChainID
+      - name: token_id
+        in: query
+        type: string
+        description: TokenID
+      - name: coin_id
+        in: query
+        type: string
+        description: CoinID
+      - name: page_count
+        in: query
+        type: integer
+        description: PageCount
+      - name: start_time
+        in: query
+        type: integer
+        description: StartTime
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/all_nft_list:
+    get:
+      responses:
+        '200':
+          description: return list of nfts of all chains
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserNft'
+      description: Get user nft list on all supported chains
+      operationId: get_user_nft_all_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: is_all
+        in: query
+        type: boolean
+        description: If true, all tokens are returned
+        default: true
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/all_simple_protocol_list:
+    get:
+      responses:
+        '200':
+          description: return list of protocols with user assets
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserSimpleProtocol'
+      description: Stats the user's protocol assets on all supported chains
+      operationId: get_user_all_simple_protocol_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/all_token_list:
+    get:
+      responses:
+        '200':
+          description: return user token balance list of all chain
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserToken'
+      description: Get user token balance
+      operationId: get_user_token_all_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: is_all
+        in: query
+        type: boolean
+        description: If true, all tokens are returned, including protocol-derived tokens
+        default: true
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/chain_balance:
+    get:
+      responses:
+        '200':
+          description: return to the usd value of net assets
+          schema:
+            $ref: '#/definitions/UserUsdValue'
+      description: Get the net assets of a chain
+      operationId: get_user_chain_balance
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - User
+  /v1/user/chain_net_curve:
+    get:
+      responses:
+        '200':
+          description: Get the chain net curve
+          schema:
+            $ref: '#/definitions/NetCurve'
+      description: Get the chain net curve
+      operationId: get_user_chain_net_curve
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - User
+  /v1/user/complex_app_list:
+    get:
+      responses:
+        '200':
+          description: return the list of apps with user's portfolio items
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserApp'
+      description: Get list of apps with user portfolio details on all supported app chains
+      operationId: get_user_complex_app_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      tags:
+      - User
+  /v1/user/complex_protocol_list:
+    get:
+      responses:
+        '200':
+          description: return the list of protocol with user's portfolio items
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserProtocol'
+      description: Get list of protocols with user portfolio details on a chain
+      operationId: get_user_complex_protocol_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - User
+  /v1/user/history_list:
+    get:
+      responses:
+        '200':
+          description: return history list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserHistory'
+      description: Get user history list
+      operationId: get_user_history_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: chain_id
+        in: query
+        type: string
+        description: ChainID
+      - name: token_id
+        in: query
+        type: string
+        description: TokenID
+      - name: coin_id
+        in: query
+        type: string
+        description: CoinID
+      - name: page_count
+        in: query
+        type: integer
+        description: PageCount
+      - name: start_time
+        in: query
+        type: integer
+        description: StartTime
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/nft_authorized_list:
+    get:
+      responses:
+        '200':
+          description: return list of nft with risk exposure
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserNFTAuthorized'
+      operationId: get_user_nft_authorized_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - User
+  /v1/user/nft_list:
+    get:
+      responses:
+        '200':
+          description: return list of nfts of a chain
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserNft'
+      description: Get user nft list
+      operationId: get_user_nft_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: is_all
+        in: query
+        type: boolean
+        description: If true, all tokens are returned
+        default: true
+      tags:
+      - User
+  /v1/user/protocol:
+    get:
+      responses:
+        '400':
+          description: Protocol not found
+        '200':
+          description: return protocol with user portfolio
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserProtocol'
+      description: Get the user's portfolio in the protocol
+      operationId: get_user_protocol
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: protocol_id
+        in: query
+        type: string
+        required: true
+        description: protocol id
+      tags:
+      - User
+  /v1/user/simple_protocol_list:
+    get:
+      responses:
+        '200':
+          description: return list of protocols with user assets
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserSimpleProtocol'
+      description: Stats the user's protocol assets on a chain
+      operationId: get_user_simple_protocol_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - User
+  /v1/user/token:
+    get:
+      responses:
+        '200':
+          description: return user token balance of each chain
+          schema:
+            $ref: '#/definitions/UserToken'
+      description: Get user token balance
+      operationId: get_user_token
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: token_id
+        in: query
+        type: string
+        required: true
+        description: token id
+      tags:
+      - User
+  /v1/user/token_authorized_list:
+    get:
+      responses:
+        '200':
+          description: return list of tokens with risk exposure
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserTokenAuthorized'
+      description: Show the user's risk exposure of approved token on a chain
+      operationId: get_user_token_authorized_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      tags:
+      - User
+  /v1/user/token_list:
+    get:
+      responses:
+        '200':
+          description: return user token balance list of each chain
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserToken'
+      description: Get user token balance
+      operationId: get_user_token_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainID
+      - name: is_all
+        in: query
+        type: boolean
+        description: If true, all tokens are returned, including protocol-derived tokens
+        default: true
+      tags:
+      - User
+  /v1/user/total_balance:
+    get:
+      responses:
+        '200':
+          description: return the total net assets and the net assets of each chain
+          schema:
+            $ref: '#/definitions/UserTotalBalance'
+      description: Get net assets on multiple chains, including tokens and protocols
+      operationId: get_user_total_balance
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      tags:
+      - User
+  /v1/user/total_net_curve:
+    get:
+      responses:
+        '200':
+          description: Get the chain net curve
+          schema:
+            $ref: '#/definitions/NetCurve'
+      description: Get the chain net curve
+      operationId: get_total_chain_net_curve
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: User Address
+      - name: chain_ids
+        in: query
+        type: array
+        description: Chain ID List
+        default:
+        - merlin
+        - taiko
+        - celo
+        - zircuit
+        - xdc
+        - sonic
+        - scrl
+        - soneium
+        - avax
+        - arb
+        - katana
+        - cro
+        - blast
+        - sophon
+        - citrea
+        - dbk
+        - core
+        - bera
+        - bsc
+        - sei
+        - cfx
+        - g0
+        - uni
+        - eth
+        - hemi
+        - bb
+        - world
+        - tempo
+        - kite
+        - morph
+        - zora
+        - mnt
+        - kava
+        - zeta
+        - lisk
+        - matic
+        - rsk
+        - xlayer
+        - abs
+        - hyper
+        - metis
+        - mode
+        - btr
+        - megaeth
+        - story
+        - chiliz
+        - flr
+        - plume
+        - era
+        - op
+        - manta
+        - klay
+        - opbnb
+        - bob
+        - monad
+        - ethlink
+        - plasma
+        - gravity
+        - b2
+        - hood
+        - ink
+        - lens
+        - fuse
+        - itze
+        - base
+        - ron
+        - xdai
+        - linea
+        - ape
+        - stable
+        - wemix
+        - cyber
+        - frax
+        items:
+          type: string
+        collectionFormat: csv
+      tags:
+      - User
+  /v1/user/used_chain_list:
+    get:
+      responses:
+        '200':
+          description: used chain list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Chain'
+      description: Get user chain list
+      operationId: get_user_chain_list
+      parameters:
+      - name: id
+        in: query
+        type: string
+        required: true
+        description: Address
+      tags:
+      - User
+  /v1/wallet/explain_tx:
+    post:
+      responses:
+        '200':
+          description: explain typed data
+      description: explain tx
+      operationId: post_explain_tx
+      tags:
+      - Wallet
+  /v1/wallet/gas_market:
+    get:
+      responses:
+        '200':
+          description: return gas list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/gasprice'
+      description: gas market
+      operationId: get_gas_market
+      parameters:
+      - name: chain_id
+        in: query
+        type: string
+        required: true
+        description: ChainId
+      - name: custom_price
+        in: query
+        type: string
+        description: CustomPrice
+        default: 0
+      tags:
+      - Wallet
+  /v1/wallet/pre_exec_tx:
+    post:
+      responses:
+        '200':
+          description: pre exec tx
+      description: pre exec tx
+      operationId: post_pre_exec_tx
+      tags:
+      - Wallet
+info:
+  title: DeBank OpenAPI
+  version: '1.0'
+  description: Build for DeFi Developers.
+produces:
+- application/json
+consumes:
+- application/json
+securityDefinitions:
+  accessKey:
+    type: apiKey
+    in: header
+    name: AccessKey
+security:
+- accessKey: []
+tags:
+- name: cloud
+- name: Account
+- name: Chain
+  description: Get chain info
+- name: App Protocol
+  description: Get app info
+- name: Protocol
+  description: Get protocol info
+- name: Pool
+  description: Get pool info
+- name: Token
+  description: Get token info
+- name: User
+  description: Get user info such as total balance, token list, and portfolio in each protocol
+- name: Wallet
+  description: It is not stable at present. If you want to use it, please contact the official first.
+- name: official
+definitions:
+  Unit:
+    properties:
+      balance:
+        type: integer
+        description: unit balance
+        example: 10000
+      stats:
+        type: array
+        description: unit stats
+        items:
+          $ref: '#/definitions/Stat'
+    type: object
+  Stat:
+    properties:
+      usage:
+        type: integer
+        description: daily usage
+        example: 10000
+      remains:
+        type: integer
+        description: daily remains
+        example: 10000
+      date:
+        type: string
+        description: date
+        example: '2022-01-02'
+    type: object
+  Chain:
+    properties:
+      id:
+        type: string
+        description: chain id
+        example: eth
+      community_id:
+        type: integer
+        description: Community-identified id
+        example: 1
+      name:
+        type: string
+        example: Ethereum
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/chain/logo_url/eth/6e0cd1f895af9836ee8c32cfc03bc279.png
+      native_token_id:
+        type: string
+        description: native token
+        example: eth
+      wrapped_token_id:
+        type: string
+        description: the erc20-wrapped of native token
+        example: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+      is_support_balance_change:
+        type: boolean
+        description: 'Whether or not the chain support token balance '
+        example: true
+    type: object
+  App Protocol:
+    properties:
+      id:
+        type: string
+        description: app id
+        example: hyperliquid
+      name:
+        type: string
+        example: Hyperliquid
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/project/logo_url/arb_hyperliquid/98dcfcb24e1ec2ab0da74679e0bfa0bb.png
+      site_url:
+        type: string
+        description: Prioritize websites that can be interacted with, not official websites
+        example: https://app.hyperliquid.xyz
+      has_supported_portfolio:
+        type: boolean
+        description: Is portfolio already supported
+        example: true
+    type: object
+  Protocol:
+    properties:
+      id:
+        type: string
+        description: protocol id
+        example: compound
+      chain:
+        type: string
+        description: chain name
+        example: eth
+      name:
+        type: string
+        example: Compound
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+      site_url:
+        type: string
+        description: Prioritize websites that can be interacted with, not official websites
+        example: https://app.compound.finance
+      has_supported_portfolio:
+        type: boolean
+        description: Is portfolio already supported
+        example: true
+      tvl:
+        type: integer
+        description: User deposit value in this protocol
+        example: 10000
+    type: object
+  Pool:
+    properties:
+      pool_id:
+        type: string
+        description: pool id
+        example: '0x00000000219ab540356cbb839cbe05303d7705fa'
+      protocol_id:
+        type: string
+        description: protocol id
+        example: eth2
+      chain:
+        type: string
+        description: chain name
+        example: eth
+      name:
+        type: string
+        example: Staked
+      contract_ids:
+        type: array
+        items:
+          type: string
+          description: contract_ids
+          example: ''
+      stats:
+        type: object
+        description: ''
+    type: object
+  Token:
+    properties:
+      id:
+        type: string
+        description: Ethereum Address or native token id
+        example: '0xdac17f958d2ee523a2206206994597c13d831ec7'
+      chain:
+        type: string
+        description: Chain Name
+        example: eth
+      name:
+        type: string
+        example: Tether USD
+      symbol:
+        type: string
+        example: USDT
+      display_symbol:
+        type: string
+        example: USDT
+      optimized_symbol:
+        type: string
+        example: USDT
+      decimals:
+        type: integer
+        example: 6
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/token/logo_url/0xdac17f958d2ee523a2206206994597c13d831ec7/3c1a718331e468abe1fc2ebe319f6c77.png
+      is_verified:
+        type: boolean
+        example: true
+      is_core:
+        type: boolean
+        example: true
+      price:
+        type: number
+        description: USD price.Price of 0 means no data
+        example: 1.01
+      time_at:
+        type: integer
+        description: The timestamp when the current token was deployed on the blockchain.
+        example: 1511829681
+    type: object
+  UserProtocol:
+    properties:
+      id:
+        type: string
+        description: protocol id
+        example: compound
+      chain:
+        type: string
+        description: chain name
+        example: eth
+      name:
+        type: string
+        example: Compound
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+      site_url:
+        type: string
+        description: Prioritize websites that can be interacted with, not official websites
+        example: https://app.compound.finance
+      has_supported_portfolio:
+        type: boolean
+        description: Is portfolio already supported
+        example: true
+      tvl:
+        type: integer
+        description: User deposit value in this protocol
+        example: 10000
+      asset_usd_value:
+        type: number
+        description: Asset USD value
+        example: '12000.123'
+      debt_usd_value:
+        type: number
+        description: Debt USD value
+        example: '12000.123'
+      net_usd_value:
+        type: number
+        description: Net asset USD value
+        example: '12000.123'
+    type: object
+  UserApp:
+    properties:
+      id:
+        type: string
+        description: app id
+        example: hyperliquid
+      name:
+        type: string
+        example: Hyperliquid
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/project/logo_url/arb_hyperliquid/98dcfcb24e1ec2ab0da74679e0bfa0bb.png
+      site_url:
+        type: string
+        description: Prioritize websites that can be interacted with, not official websites
+        example: https://app.hyperliquid.xyz
+      has_supported_portfolio:
+        type: boolean
+        description: Is portfolio already supported
+        example: true
+      portfolio_item_list:
+        type: array
+        items:
+          $ref: '#/definitions/PortfolioItem'
+    type: object
+  PortfolioItem:
+    properties:
+      stats:
+        $ref: '#/definitions/stats'
+      update_at:
+        type: number
+        description: Update time
+        example: 1617476353.1
+      name:
+        type: string
+        description: name
+        example: Staked
+      detail_types:
+        type: array
+        items:
+          type: string
+          description: type
+          example: Common
+      detail:
+        type: object
+        description: refer to https://docs.open.debank.com/en/reference/api-models/portfolioitemobject to get detail
+      proxy_detail:
+        type: object
+        description: refer to https://docs.open.debank.com/en/reference/api-models/portfolioitemobject to get detail
+    type: object
+  stats:
+    properties:
+      asset_usd_value:
+        type: number
+        description: Asset USD value
+        example: '12000.123'
+      debt_usd_value:
+        type: number
+        description: Debt USD value
+        example: '12000.123'
+      net_usd_value:
+        type: number
+        description: Net asset USD value
+        example: '12000.123'
+    type: object
+  UserToken:
+    properties:
+      id:
+        type: string
+        description: Ethereum Address or native token id
+        example: '0xdac17f958d2ee523a2206206994597c13d831ec7'
+      chain:
+        type: string
+        description: Chain Name
+        example: eth
+      name:
+        type: string
+        example: Tether USD
+      symbol:
+        type: string
+        example: USDT
+      display_symbol:
+        type: string
+        example: USDT
+      optimized_symbol:
+        type: string
+        example: USDT
+      decimals:
+        type: integer
+        example: 6
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/token/logo_url/0xdac17f958d2ee523a2206206994597c13d831ec7/3c1a718331e468abe1fc2ebe319f6c77.png
+      is_verified:
+        type: boolean
+        example: true
+      is_core:
+        type: boolean
+        example: true
+      price:
+        type: number
+        description: USD price.Price of 0 means no data
+        example: 1.01
+      time_at:
+        type: integer
+        description: The timestamp when the current token was deployed on the blockchain.
+        example: 1511829681
+      amount:
+        type: number
+        description: the amount of user token
+        example: '12000.123'
+      raw_amount:
+        type: integer
+        description: the raw amount of user token
+        example: '120001230000'
+    type: object
+  UserNft:
+    properties:
+      id:
+        type: string
+        description: id
+        example: defc948fbe6d3b138b49bf981e276f0b
+      contract_id:
+        type: string
+        description: contract_id
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      inner_id:
+        type: string
+        description: inner_id
+        example: '55575360221028374465659771733000318579577403829328624053715758637886677712897'
+      chain:
+        type: string
+        description: chain
+        example: eth
+      name:
+        type: string
+        description: name
+        example: A New Era has begun
+      description:
+        type: string
+        description: description
+        example: '3 of 9
+
+
+          On February 8, 2021'
+      content_type:
+        type: string
+        description: content_type
+        example: image_url
+      content:
+        type: string
+        description: content
+        example: https://lh3.googleusercontent.com/WQnK8JxSSPj5YIxegh9iaprMaMmv-JswrcnTp9Mi5PXKDWmigkOzTBBIAkhdXtLPe7EwIe6Q1gi2gdtLzV08d2y67rMVTHx0Ei0S
+      detail_url:
+        type: string
+        description: detail_url
+        example: https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/55575360221028374465659771733000318579577403829328624053715758637886677712897
+      contract_name:
+        type: string
+        description: contract_name
+        example: OpenSea Shared Storefront
+      is_erc1155:
+        type: boolean
+        description: is_erc1155
+        default: false
+        example: true
+      is_erc721:
+        type: boolean
+        description: is_erc721
+        default: false
+        example: true
+      amount:
+        type: number
+        description: amount
+        example: 1
+      usd_price:
+        type: number
+        description: usd_price
+        example: 51.492552
+      collection_id:
+        type: string
+        description: collection_id
+        example: Ape Yacht Club
+      attributes:
+        type: array
+        items:
+          $ref: '#/definitions/attributes'
+      protocol:
+        $ref: '#/definitions/Protocol'
+      pay_token:
+        $ref: '#/definitions/newToken2'
+    type: object
+  attributes:
+    properties:
+      trait_type:
+        type: string
+        description: trait_type
+        example: Artist
+      value:
+        type: object
+        example: SpaceTurtleShip
+    type: object
+  newToken2:
+    properties:
+      id:
+        type: string
+        description: Ethereum Address or native token id
+        example: '0xdac17f958d2ee523a2206206994597c13d831ec7'
+      chain:
+        type: string
+        description: Chain Name
+        example: eth
+      name:
+        type: string
+        example: Tether USD
+      symbol:
+        type: string
+        example: USDT
+      display_symbol:
+        type: string
+        example: USDT
+      optimized_symbol:
+        type: string
+        example: USDT
+      decimals:
+        type: integer
+        example: 6
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/token/logo_url/0xdac17f958d2ee523a2206206994597c13d831ec7/3c1a718331e468abe1fc2ebe319f6c77.png
+      is_verified:
+        type: boolean
+        example: true
+      is_core:
+        type: boolean
+        example: true
+      price:
+        type: number
+        description: USD price.Price of 0 means no data
+        example: 1.01
+      time_at:
+        type: integer
+        description: The timestamp when the current token was deployed on the blockchain.
+        example: 1511829681
+      amount:
+        type: number
+        description: amount
+        example: 0.0178
+    type: object
+  UserHistory:
+    properties:
+      cate_dict:
+        type: object
+        description: cate_dict
+      history_list:
+        type: array
+        items:
+          $ref: '#/definitions/history_list'
+      project_dict:
+        type: object
+        description: project dict
+      token_dict:
+        type: object
+        description: token dict
+    type: object
+  history_list:
+    properties:
+      cate_id:
+        type: string
+        description: cate id
+        example: approve
+      id:
+        type: string
+        description: tx hash
+        example: '0x403d4d104637442ed98132157319b6a5771a402551c7a1f9a0cbebea201c9930'
+      project_id:
+        type: string
+        description: project id
+        example: uniswap
+      receives:
+        type: array
+        items:
+          $ref: '#/definitions/receives'
+      sends:
+        type: array
+        items:
+          $ref: '#/definitions/sends'
+      token_approve:
+        type: array
+        items:
+          $ref: '#/definitions/token_approve'
+      time_at:
+        type: integer
+        example: 1646634891
+      tx:
+        $ref: '#/definitions/tx'
+    type: object
+  receives:
+    properties:
+      amount:
+        type: number
+        example: 1
+      from_addr:
+        type: string
+        description: from_addr
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      token_id:
+        type: string
+        description: token_id
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+    type: object
+  sends:
+    properties:
+      amount:
+        type: number
+        example: 0.1
+      to_addr:
+        type: string
+        description: to_addr
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      token_id:
+        type: string
+        description: token_id
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+    type: object
+  token_approve:
+    properties:
+      value:
+        type: number
+        example: 0.1
+      spender:
+        type: string
+        description: spender
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      token_id:
+        type: string
+        description: token_id
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+    type: object
+  tx:
+    properties:
+      eth_gas_fee:
+        type: number
+        example: 0.002296035
+      usd_gas_fee:
+        type: number
+        example: 0.002296035
+      value:
+        type: number
+        example: 0.002296035
+      from_addr:
+        type: string
+        description: from_addr
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      to_addr:
+        type: string
+        description: to_addr
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      name:
+        type: string
+        example: transfer
+      status:
+        type: integer
+        example: 1
+      params:
+        type: array
+        items:
+          type: string
+    type: object
+  UserUsdValue:
+    properties:
+      usd_value:
+        type: number
+        description: the balance of the account
+        example: '12000.123'
+    type: object
+  UserTotalBalance:
+    properties:
+      total_usd_value:
+        type: number
+        description: total usd value
+        example: '12000.123'
+      chain_list:
+        type: array
+        items:
+          $ref: '#/definitions/NewChain'
+    type: object
+  NewChain:
+    properties:
+      id:
+        type: string
+        description: chain id
+        example: eth
+      community_id:
+        type: integer
+        description: Community-identified id
+        example: 1
+      name:
+        type: string
+        example: Ethereum
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/chain/logo_url/eth/6e0cd1f895af9836ee8c32cfc03bc279.png
+      native_token_id:
+        type: string
+        description: native token
+        example: eth
+      wrapped_token_id:
+        type: string
+        description: the erc20-wrapped of native token
+        example: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+      is_support_balance_change:
+        type: boolean
+        description: 'Whether or not the chain support token balance '
+        example: true
+      usd_value:
+        type: number
+        description: the balance of the account
+        example: '12000.123'
+    type: object
+  UserSimpleProtocol:
+    properties:
+      id:
+        type: string
+        description: protocol id
+        example: compound
+      chain:
+        type: string
+        description: chain name
+        example: eth
+      name:
+        type: string
+        example: Compound
+      logo_url:
+        type: string
+        example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+      site_url:
+        type: string
+        description: Prioritize websites that can be interacted with, not official websites
+        example: https://app.compound.finance
+      has_supported_portfolio:
+        type: boolean
+        description: Is portfolio already supported
+        example: true
+      tvl:
+        type: integer
+        description: User deposit value in this protocol
+        example: 10000
+      asset_usd_value:
+        type: number
+        description: Asset USD value
+        example: '12000.123'
+      debt_usd_value:
+        type: number
+        description: Debt USD value
+        example: '12000.123'
+      net_usd_value:
+        type: number
+        description: Net asset USD value
+        example: '12000.123'
+    type: object
+  UserTokenAuthorized:
+    properties:
+      id:
+        type: string
+        description: contract id
+        example: '0xc1330acbbce97cb9695b7ee161c0f95b875a8b0f'
+      name:
+        type: string
+        description: contract name
+        example: One Eth
+      symbol:
+        type: string
+        description: contract symbol
+        example: ONE
+      logo_url:
+        type: string
+        description: contract logo_url
+        example: ''
+      chain:
+        type: string
+        description: chain
+        example: eth
+      price:
+        type: number
+        description: native token price of the chain
+        example: 2579.51594392348
+      balance:
+        type: number
+        description: balance of the chain
+        example: 0.09901859967795691
+      sum_exposure_usd:
+        type: number
+        description: exposure value
+        example: 255.4200566142662
+      exposure_balance:
+        type: number
+        description: exposure amount
+        example: 0.09901859967795691
+      spenders:
+        type: array
+        items:
+          $ref: '#/definitions/Spenders'
+    type: object
+  Spenders:
+    properties:
+      id:
+        type: string
+        description: id
+        example: '0x3bdf1977d87edad8e0617efcea958f6d43a4c30e'
+      protocol:
+        $ref: '#/definitions/Protocol2'
+    type: object
+  Protocol2:
+    properties:
+      id:
+        type: string
+        description: contract id
+        example: uniswap3
+      name:
+        type: string
+        description: contract name
+        example: Uniswap V3
+      logo_url:
+        type: string
+        description: contract logo_url
+        example: https://static.debank.com/image/project/logo_url/uniswap3/87a541b3b83b041c8d12119e5a0d19f0.png
+      chain:
+        type: string
+        description: chain
+        example: eth
+    type: object
+  UserNFTAuthorized:
+    properties:
+      tokens:
+        type: array
+        items:
+          $ref: '#/definitions/nft_tokens'
+      contracts:
+        type: array
+        items:
+          $ref: '#/definitions/nft_contracts'
+      total:
+        type: string
+        description: the amount of user nft tokens
+        example: '12000'
+    type: object
+  nft_tokens:
+    properties:
+      id:
+        type: string
+        description: id
+        example: defc948fbe6d3b138b49bf981e276f0b
+      contract_id:
+        type: string
+        description: contract_id
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      inner_id:
+        type: string
+        description: inner_id
+        example: '55575360221028374465659771733000318579577403829328624053715758637886677712897'
+      chain:
+        type: string
+        description: chain
+        example: eth
+      name:
+        type: string
+        description: name
+        example: A New Era has begun
+      symbol:
+        type: string
+        description: symbol
+        example: UNI-V3-POS
+      total_supply:
+        type: integer
+        description: total_supply
+        example: 1000
+      description:
+        type: string
+        description: description
+        example: '3 of 9
+
+
+          On February 8, 2021'
+      content_type:
+        type: string
+        description: content_type
+        example: image_url
+      content:
+        type: string
+        description: content
+        example: https://lh3.googleusercontent.com/WQnK8JxSSPj5YIxegh9iaprMaMmv-JswrcnTp9Mi5PXKDWmigkOzTBBIAkhdXtLPe7EwIe6Q1gi2gdtLzV08d2y67rMVTHx0Ei0S
+      detail_url:
+        type: string
+        description: detail_url
+        example: https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/55575360221028374465659771733000318579577403829328624053715758637886677712897
+      contract_name:
+        type: string
+        description: contract_name
+        example: OpenSea Shared Storefront
+      is_erc1155:
+        type: boolean
+        description: is_erc1155
+        default: false
+        example: true
+      is_erc721:
+        type: boolean
+        description: is_erc721
+        default: false
+      amount:
+        type: string
+        description: amount
+        example: '1'
+      spenders:
+        type: array
+        items:
+          $ref: '#/definitions/Spenders'
+    type: object
+  nft_contracts:
+    properties:
+      chain:
+        type: string
+        description: chain
+        example: eth
+      contract_name:
+        type: string
+        description: contract_name
+        example: OpenSea Shared Storefront
+      contract_id:
+        type: string
+        description: contract_id
+        example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      is_erc1155:
+        type: boolean
+        description: is_erc1155
+        default: false
+        example: true
+      is_erc721:
+        type: boolean
+        description: is_erc721
+        default: false
+        example: true
+      amount:
+        type: string
+        description: amount
+        example: '1'
+      spenders:
+        type: array
+        items:
+          $ref: '#/definitions/Spenders'
+    type: object
+  NetCurve:
+    properties:
+      timestamp:
+        type: number
+        description: time
+        example: '1669706400'
+      usd_value:
+        type: number
+        description: USD value
+        example: '12000.123'
+    type: object
+  gasprice:
+    properties:
+      level:
+        type: string
+        example: slow
+      price:
+        type: integer
+        example: 30000000000
+    type: object
+responses:
+  ParseError:
+    description: When a mask can't be parsed
+  MaskError:
+    description: When any error occurs on mask
+  AssertionError: {}
+  ValidationError: {}

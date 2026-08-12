@@ -1,0 +1,29 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for DeBank OpenAPI
+  version: 1.0.0
+extends: openapi/debank-pro-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: debank
+    x-apievangelist-harvested-from: https://pro-openapi.debank.com/swagger.json
+    x-apievangelist-harvested: '2026-08-12'
+    x-apievangelist-note: Harvested verbatim from the API host root. Original is Swagger 2.0 with no host/schemes
+      block; the production base is https://pro-openapi.debank.com.
+- target: $
+  update:
+    host: pro-openapi.debank.com
+    schemes:
+    - https
+- target: $.info
+  update:
+    contact:
+      name: DeBank Cloud
+      email: hello.cloud@debank.com
+      url: https://cloud.debank.com/
+    termsOfService: https://docs.cloud.debank.com/en/terms-of-service
+- target: $.securityDefinitions.accessKey
+  update:
+    description: Prepaid, unit-metered access key issued from the DeBank Cloud dashboard. Sent as the AccessKey
+      request header on every call.

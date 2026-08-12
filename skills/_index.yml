@@ -1,0 +1,32 @@
+generated: '2026-08-12'
+method: generated
+source: openapi/debank-pro-openapi.yml + conventions/ + errors/ + rate-limits/
+note: Generated from the published Swagger. Every operationId referenced in these skills was verified verbatim against
+  openapi/debank-pro-openapi.yml. DeBank publishes no AGENTS.md or first-party skill files — searched debank.com,
+  cloud.debank.com, docs.cloud.debank.com and the DeBankDeFi GitHub org.
+skills:
+- file: debank-wallet-portfolio-snapshot.md
+  name: DeBank wallet portfolio snapshot
+  api: openapi/debank-pro-openapi.yml
+  operations:
+  - get_user_total_balance
+  - get_user_chain_list
+  - get_user_token_all_list
+  - get_user_all_simple_protocol_list
+  - get_user_all_complex_protocol_list
+  - get_user_chain_balance
+- file: debank-approval-risk-review.md
+  name: DeBank token and NFT approval risk review
+  api: openapi/debank-pro-openapi.yml
+  operations:
+  - get_user_chain_list
+  - get_user_token_authorized_list
+  - get_user_nft_authorized_list
+  - get_get_contract_view
+- file: debank-transaction-preflight.md
+  name: DeBank transaction preflight
+  api: openapi/debank-pro-openapi.yml
+  operations:
+  - get_gas_market
+  - post_pre_exec_tx
+  - post_explain_tx

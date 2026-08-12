@@ -1,0 +1,237 @@
+generated: '2026-08-12'
+method: derived
+status: candidate
+source: openapi/debank-pro-openapi.yml
+note: DeBank publishes no first-party MCP server. Several third-party servers wrap the DeBank Cloud API (demcp/demcp-debank-mcp,
+  caiovicentino/debank-mcp-server, @iqai/mcp-debank on npm) — none is operated by DeBank Global Pte. Ltd., and all
+  require the user to supply their own DeBank Cloud AccessKey. The tool list below is a candidate derived one-to-one
+  from the published Swagger operations; it is not a server DeBank runs.
+server:
+  name: debank
+  transport: http
+  url: null
+  published_by_provider: false
+third_party_servers:
+- name: demcp-debank-mcp
+  repo: https://github.com/demcp/demcp-debank-mcp
+  official: false
+  listed_at: https://www.pulsemcp.com/servers/demcp-debank
+- name: debank-mcp-server
+  repo: https://github.com/caiovicentino/debank-mcp-server
+  official: false
+- name: '@iqai/mcp-debank'
+  registry: npm
+  repo: https://github.com/BrainDAO/mcp-debank
+  official: false
+tool_count: 42
+tools:
+- name: get_app_protocol_list
+  description: Get list of apps on supported app chains
+  category: App Protocol
+  source_operation: openapi/debank-pro-openapi.yml#get_app_protocol_list
+  http: GET /v1/app_protocol/list
+- name: get_chain
+  description: Get chain info by id
+  category: Chain
+  source_operation: openapi/debank-pro-openapi.yml#get_chain
+  http: GET /v1/chain
+- name: get_chain_list
+  description: Get supported chain list
+  category: Chain
+  source_operation: openapi/debank-pro-openapi.yml#get_chain_list
+  http: GET /v1/chain/list
+- name: get_chain_list_view
+  description: ''
+  category: cloud
+  source_operation: openapi/debank-pro-openapi.yml#get_chain_list_view
+  http: GET /cloud/chain/list
+- name: get_gas_market
+  description: gas market
+  category: Wallet
+  source_operation: openapi/debank-pro-openapi.yml#get_gas_market
+  http: GET /v1/wallet/gas_market
+- name: get_get_collection_view
+  description: ''
+  category: cloud
+  source_operation: openapi/debank-pro-openapi.yml#get_get_collection_view
+  http: GET /cloud/collection
+- name: get_get_contract_view
+  description: ''
+  category: cloud
+  source_operation: openapi/debank-pro-openapi.yml#get_get_contract_view
+  http: GET /cloud/contract
+- name: get_get_token_view
+  description: ''
+  category: cloud
+  source_operation: openapi/debank-pro-openapi.yml#get_get_token_view
+  http: GET /cloud/token
+- name: get_pool
+  description: ''
+  category: Pool
+  source_operation: openapi/debank-pro-openapi.yml#get_pool
+  http: GET /v1/pool
+- name: get_protocol
+  description: ''
+  category: Protocol
+  source_operation: openapi/debank-pro-openapi.yml#get_protocol
+  http: GET /v1/protocol
+- name: get_protocol_all_list
+  description: ''
+  category: Protocol
+  source_operation: openapi/debank-pro-openapi.yml#get_protocol_all_list
+  http: GET /v1/protocol/all_list
+- name: get_protocol_list
+  description: ''
+  category: Protocol
+  source_operation: openapi/debank-pro-openapi.yml#get_protocol_list
+  http: GET /v1/protocol/list
+- name: get_protocol_list_view
+  description: ''
+  category: cloud
+  source_operation: openapi/debank-pro-openapi.yml#get_protocol_list_view
+  http: GET /cloud/protocol/list
+- name: get_token
+  description: Get token by address
+  category: Token
+  source_operation: openapi/debank-pro-openapi.yml#get_token
+  http: GET /v1/token
+- name: get_token_history_price
+  description: Get token history price by address
+  category: Token
+  source_operation: openapi/debank-pro-openapi.yml#get_token_history_price
+  http: GET /v1/token/history_price
+- name: get_token_list_by_ids
+  description: Bulk token fetching by address
+  category: Token
+  source_operation: openapi/debank-pro-openapi.yml#get_token_list_by_ids
+  http: GET /v1/token/list_by_ids
+- name: get_token_top_holders
+  description: Get top token holders
+  category: Token
+  source_operation: openapi/debank-pro-openapi.yml#get_token_top_holders
+  http: GET /v1/token/top_holders
+- name: get_total_chain_net_curve
+  description: Get the chain net curve
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_total_chain_net_curve
+  http: GET /v1/user/total_net_curve
+- name: get_unit_api_list
+  description: ''
+  category: Account
+  source_operation: openapi/debank-pro-openapi.yml#get_unit_api_list
+  http: GET /v1/account/units
+- name: get_user_all_complex_protocol_list
+  description: Get list of protocols with user portfolio details on all supported chains
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_all_complex_protocol_list
+  http: GET /v1/user/all_complex_protocol_list
+- name: get_user_all_simple_protocol_list
+  description: Stats the user's protocol assets on all supported chains
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_all_simple_protocol_list
+  http: GET /v1/user/all_simple_protocol_list
+- name: get_user_chain_balance
+  description: Get the net assets of a chain
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_chain_balance
+  http: GET /v1/user/chain_balance
+- name: get_user_chain_list
+  description: Get user chain list
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_chain_list
+  http: GET /v1/user/used_chain_list
+- name: get_user_chain_net_curve
+  description: Get the chain net curve
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_chain_net_curve
+  http: GET /v1/user/chain_net_curve
+- name: get_user_complex_app_list
+  description: Get list of apps with user portfolio details on all supported app chains
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_complex_app_list
+  http: GET /v1/user/complex_app_list
+- name: get_user_complex_protocol_list
+  description: Get list of protocols with user portfolio details on a chain
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_complex_protocol_list
+  http: GET /v1/user/complex_protocol_list
+- name: get_user_history_all_list
+  description: Get user all history list
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_history_all_list
+  http: GET /v1/user/all_history_list
+- name: get_user_history_list
+  description: Get user history list
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_history_list
+  http: GET /v1/user/history_list
+- name: get_user_nft_all_list
+  description: Get user nft list on all supported chains
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_nft_all_list
+  http: GET /v1/user/all_nft_list
+- name: get_user_nft_authorized_list
+  description: ''
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_nft_authorized_list
+  http: GET /v1/user/nft_authorized_list
+- name: get_user_nft_list
+  description: Get user nft list
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_nft_list
+  http: GET /v1/user/nft_list
+- name: get_user_protocol
+  description: Get the user's portfolio in the protocol
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_protocol
+  http: GET /v1/user/protocol
+- name: get_user_simple_protocol_list
+  description: Stats the user's protocol assets on a chain
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_simple_protocol_list
+  http: GET /v1/user/simple_protocol_list
+- name: get_user_token
+  description: Get user token balance
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_token
+  http: GET /v1/user/token
+- name: get_user_token_all_list
+  description: Get user token balance
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_token_all_list
+  http: GET /v1/user/all_token_list
+- name: get_user_token_authorized_list
+  description: Show the user's risk exposure of approved token on a chain
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_token_authorized_list
+  http: GET /v1/user/token_authorized_list
+- name: get_user_token_list
+  description: Get user token balance
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_token_list
+  http: GET /v1/user/token_list
+- name: get_user_total_balance
+  description: Get net assets on multiple chains, including tokens and protocols
+  category: User
+  source_operation: openapi/debank-pro-openapi.yml#get_user_total_balance
+  http: GET /v1/user/total_balance
+- name: post_explain_tx
+  description: explain tx
+  category: Wallet
+  source_operation: openapi/debank-pro-openapi.yml#post_explain_tx
+  http: POST /v1/wallet/explain_tx
+- name: post_group_send_api_view
+  description: ''
+  category: official
+  source_operation: openapi/debank-pro-openapi.yml#post_group_send_api_view
+  http: POST /v1/official/group_send
+- name: post_message_send_api_view
+  description: ''
+  category: official
+  source_operation: openapi/debank-pro-openapi.yml#post_message_send_api_view
+  http: POST /v1/official/message/send
+- name: post_pre_exec_tx
+  description: pre exec tx
+  category: Wallet
+  source_operation: openapi/debank-pro-openapi.yml#post_pre_exec_tx
+  http: POST /v1/wallet/pre_exec_tx

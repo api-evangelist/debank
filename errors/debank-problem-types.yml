@@ -1,0 +1,62 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/readme/error-code
+format: custom
+note: DeBank does not publish RFC 9457 application/problem+json. API-level failures are signalled by HTTP status
+  code alone (documented set below); the wallet pre-execution endpoints return a JSON envelope {code, message} with
+  their own numeric code registry.
+envelope:
+  applies_to:
+  - post_wallet_pre_exec_tx
+  - post_wallet_explain_tx
+  shape:
+    code: integer
+    message: string
+  source: https://docs.cloud.debank.com/en/readme/error-code/pre-exec-error-code
+problems:
+- status: 400
+  title: Bad Request
+  meaning: invalid params.
+  source: https://docs.cloud.debank.com/en/readme/error-code
+  in_spec: true
+  source_operations:
+  - openapi/debank-pro-openapi.yml#get_unit_api_list
+  - openapi/debank-pro-openapi.yml#get_user_protocol
+- status: 401
+  title: Unauthorized
+  meaning: You must authenticate your request with an access key.
+  source: https://docs.cloud.debank.com/en/readme/error-code
+  in_spec: false
+- status: 403
+  title: Forbidden
+  meaning: You've hit your capacity limit.
+  source: https://docs.cloud.debank.com/en/readme/error-code
+  in_spec: false
+- status: 429
+  title: Too Many Requests
+  meaning: You've exceeded our ratelimit for api.
+  source: https://docs.cloud.debank.com/en/readme/error-code
+  in_spec: false
+- status: 500
+  title: Internal Server Error
+  meaning: We're unable to process your request right now.
+  source: https://docs.cloud.debank.com/en/readme/error-code
+  in_spec: false
+pre_exec_codes:
+- code: 1000
+  reason: Unknown node error
+- code: 1002
+  reason: Contract Execution Error
+- code: 2000
+  reason: Unknown api error
+- code: 2001
+  reason: balance is insufficient
+- code: 2002
+  reason: Node service is currently unavailable
+spec_coverage:
+  openapi: openapi/debank-pro-openapi.yml
+  operations_total: 42
+  operations_declaring_4xx: 2
+  operations_declaring_5xx: 0
+  gap: The published Swagger declares only 200 and 400 responses; 401/403/429/500 are documented in the error-code
+    page but absent from the machine-readable contract.

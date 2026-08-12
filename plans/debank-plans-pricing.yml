@@ -1,0 +1,41 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/readme/open-api
+model: prepaid units (credits) purchased from the dashboard
+currency: null
+plan_count: 0
+published_plans: []
+note: DeBank publishes no public price table. The docs state that an account on cloud.debank.com yields an access
+  key and that "if you need units, you can purchase them through our dashborad" [sic], and the terms of service
+  grant a 14-day free trial, but every unit price and any tier structure sits behind the authenticated DeBank Cloud
+  dashboard. A "Pro Plan" is named only in the context of its rate limit (100 req/s). Consumption is metered in
+  units and readable at runtime via GET /v1/account/units, which returns a units balance plus 30 days of daily usage.
+free_trial:
+  available: true
+  length_days: 14
+  source: https://docs.cloud.debank.com/en/terms-of-service
+named_tiers:
+- name: Pro Plan
+  price: null
+  included_quota: null
+  overage: null
+  limits:
+    requests_per_second: 100
+  note: Named in the rate-limit section only; no price or quota is published.
+  source: https://docs.cloud.debank.com/en/readme/open-api
+metering:
+  unit: unit
+  balance_endpoint: GET /v1/account/units
+  operation: get_account_units
+  docs: https://docs.cloud.debank.com/en/readme/auxiliary-feature/units
+  per_call_cost_published: false
+  note: The docs do not publish how many units each endpoint consumes.
+price_change_policy: At least 3 months advance notice of pricing-policy changes.
+contact: hello.cloud@debank.com
+evidence:
+- url: https://cloud.debank.com/
+  status: 200
+  note: Single-page app; the pricing surface renders only after dashboard login.
+- url: https://docs.cloud.debank.com/en/readme/open-api
+  status: 200
+  note: Names units + Pro Plan, publishes no prices.

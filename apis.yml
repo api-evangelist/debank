@@ -1,23 +1,135 @@
 aid: debank
 name: DeBank
-description: 'DeBank is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: DeBank is a Web3 portfolio tracker and DeFi data platform operated by DeBank Global Pte. Ltd. (Singapore) that
+  indexes wallet balances, protocol positions, NFTs, token prices and transaction history across a large set of EVM and
+  non-EVM chains. Its developer arm, DeBank Cloud, exposes that data core as the DeBank OpenAPI (a Swagger 2.0 contract
+  at pro-openapi.debank.com covering chain, protocol, pool, token, user-portfolio and wallet transaction-simulation endpoints),
+  as DeBank Connect (an OAuth 2.0 authorization-code sign-in that lets a dApp read an authorizing user's base, on-chain
+  and social data), and as an Official Account messaging API for reaching on-chain users through DeBank Hi. Access is metered
+  in prepaid "units" bought from the DeBank Cloud dashboard, keyed by an AccessKey header, with a 14-day free trial and
+  a documented 100 requests/second ceiling on the Pro plan.
 url: https://raw.githubusercontent.com/api-evangelist/debank/refs/heads/main/apis.yml
+image: https://static-assets.debank.com/files/e8aeedfa-2679-429e-ad80-b469f5ca96c2.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.21'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
-- Company
-apis: []
+- web3
+- defi
+- blockchain
+- crypto
+- portfolio-tracking
+- on-chain-data
+- wallet
+- token-data
+- nft
+- ethereum
+- oauth
+- market-data
+apis:
+- name: DeBank OpenAPI
+  description: The DeBank Cloud Pro API — a Swagger 2.0 contract published at the API host root covering chain and protocol
+    metadata, pool and token data, historical token prices, user portfolio reads (token lists, NFT lists, complex protocol
+    positions, net-worth curves, transaction history, token/NFT approvals), wallet helpers (transaction pre-execution, transaction
+    explanation, gas market), unit-balance accounting, and Official Account messaging. Authenticated with an AccessKey header
+    and metered in prepaid units.
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - web3
+  - defi
+  - blockchain
+  - portfolio-tracking
+  - on-chain-data
+  - token-data
+  - nft
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-pro-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+  - type: Overlay
+    url: overlays/debank-pro-openapi-overlay.yaml
+- name: DeBank Connect
+  description: OAuth 2.0 authorization-code sign-in for dApps. After a user authorizes, the dApp exchanges the code at api.connect.debank.com/oauth/token
+    using HTTP Basic client credentials and reads the user's base profile (web3_id, avatar, on-chain birth date, follower
+    value), on-chain portfolio data, and social following data against three read-only scopes.
+  humanURL: https://docs.cloud.debank.com/en/debank-connect/integration
+  baseURL: https://api.connect.debank.com
+  tags:
+  - oauth
+  - identity
+  - web3
+  - social
+  properties:
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/debank-connect/integration
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/debank-connect/api
+  - type: OAuthScopes
+    url: scopes/debank-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/debank-agentic-access.yml
+- type: DomainSecurity
+  url: security/debank-domain-security.yml
+- type: Authentication
+  url: authentication/debank-authentication.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://debank.com/
+- type: DeveloperPortal
+  url: https://cloud.debank.com/
+- type: Documentation
+  url: https://docs.cloud.debank.com/en
+- type: APIReference
+  url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+- type: GettingStarted
+  url: https://docs.cloud.debank.com/en/readme/open-api
+- type: SignUp
+  url: https://cloud.debank.com/
+- type: TermsOfService
+  url: https://docs.cloud.debank.com/en/terms-of-service
+- type: Support
+  url: mailto:hello.cloud@debank.com
+- type: GitHubOrganization
+  url: https://github.com/DeBankDeFi
+- type: ChangeLog
+  url: https://docs.cloud.debank.com/en/readme/changelog
+- type: LLMsTxt
+  url: llms/debank-llms.txt
+- type: Packages
+  url: packages/debank-packages.yml
+- type: Conventions
+  url: conventions/debank-conventions.yml
+- type: Lifecycle
+  url: lifecycle/debank-lifecycle.yml
+- type: ChangeLog
+  url: changelog/debank-changelog.yml
+- type: Plans
+  url: plans/debank-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/debank-rate-limits.yml
+- type: Conformance
+  url: conformance/debank-conformance.yml
+- type: DataModel
+  url: data-model/debank-data-model.yml
+- type: ErrorCatalog
+  url: errors/debank-problem-types.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-08-12'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1

@@ -1,0 +1,68 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/debank-pro-openapi.yml + docs.cloud.debank.com
+standards:
+- id: swagger-2.0
+  conforms: true
+  evidence: 'Published contract declares swagger: "2.0" at https://pro-openapi.debank.com/swagger.json'
+- id: openapi-3.x
+  conforms: false
+  evidence: The provider publishes Swagger 2.0 only; no OpenAPI 3.x document is served on any host.
+- id: oauth2
+  conforms: true
+  evidence: DeBank Connect implements RFC 6749 authorization-code grant with refresh tokens and client_secret_basic
+    client authentication. Documented at https://docs.cloud.debank.com/en/debank-connect/integration
+- id: oauth2-pkce
+  conforms: false
+  evidence: RFC 7636 is not mentioned; only the plain authorization-code grant is supported.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server returns 404 on api.connect.debank.com
+- id: oidc
+  conforms: false
+  evidence: No id_token, no userinfo endpoint, no /.well-known/openid-configuration (404).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json responses; the contract produces application/json only and documents HTTP
+    status codes alone.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 or an SPA shell on every host.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation headers advertised in docs or observed in live responses.
+- id: ietf-ratelimit-headers
+  conforms: false
+  evidence: No RateLimit-*/X-RateLimit-*/Retry-After headers observed on a live response (probed 2026-08-12).
+- id: idempotency-key
+  conforms: false
+  evidence: No idempotency key header or parameter anywhere in the spec or docs.
+- id: json-api
+  conforms: false
+  evidence: Bare JSON arrays and objects; no JSON:API envelope.
+- id: pagination
+  conforms: true
+  evidence: Time-cursor pagination via start_time + page_count (max 20) on the history endpoints; start/limit on
+    token top holders.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is published.
+- id: mcp
+  conforms: false
+  evidence: No first-party MCP server; third-party servers only.
+- id: a2a
+  conforms: false
+  evidence: No agent card at /.well-known/agent-card.json or /.well-known/agent.json on any host.
+- id: llms-txt
+  conforms: true
+  evidence: https://docs.cloud.debank.com/en/llms.txt is served and lists the full docs index; every page also has
+    a .md twin.
+compliance_program:
+  published: false
+  note: No trust center, no SOC 2 / ISO 27001 / PCI / GDPR certification claim, and no security or compliance page
+    was found on any DeBank host. The terms of service promise only "administrative, physical, and technical safeguards
+    ... consistent with industry standard practices" with no named framework. No Compliance pointer is emitted.
+legal_entity:
+  name: DeBank Global Pte. Ltd.
+  jurisdiction: Singapore
+  source: https://docs.cloud.debank.com/en/terms-of-service

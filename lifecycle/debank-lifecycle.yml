@@ -1,0 +1,44 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/readme/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  note: A second unversioned /cloud/* path family is served from the same contract.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  announcement_channel: https://twitter.com/debankcloud
+  policy_statement: '"We prefer keep our policy as steady as possible. In terms of any potential changes regarding
+    pricing policy & terms of use, etc, we will announce at least 3 months in advance." — plus a request that developers
+    follow @debankcloud on X for breaking-change notices. This is a stated notice period, not a published deprecation
+    policy page, and no Deprecation/Sunset response headers (RFC 8594) are advertised or observed.'
+  notice_period: 3 months (pricing policy and terms of use)
+  source: https://docs.cloud.debank.com/en/readme/open-api
+deprecations_recorded:
+- date: '2022-10-11'
+  item: Get contract address list of a protocol
+  action: deprecated
+  source: https://docs.cloud.debank.com/en/readme/changelog
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+  note: No SLA or uptime commitment is published on the public docs or terms of service.
+status_page: null
+status_page_note: No status page found. status.debank.com and status.cloud.debank.com do not resolve; debank.statuspage.io
+  returns the generic Atlassian Statuspage marketing site, not a DeBank-branded status page.
+trial:
+  length_days: 14
+  source: https://docs.cloud.debank.com/en/terms-of-service
+evidence:
+- url: https://status.debank.com
+  status: 0
+  note: DNS does not resolve
+- url: https://status.cloud.debank.com
+  status: 0
+  note: DNS does not resolve
+- url: https://debank.statuspage.io
+  status: 200
+  note: Atlassian Statuspage marketing page, not DeBank

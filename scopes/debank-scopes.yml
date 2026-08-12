@@ -1,0 +1,56 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/debank-connect/integration
+docs: https://docs.cloud.debank.com/en/debank-connect/integration
+note: OAuth 2.0 lives in DeBank Connect, not in the published Swagger — derive-oauth-scopes.py found zero oauth2
+  securitySchemes in openapi/, so this file is searched from the Connect integration guide. The DeBank Cloud Pro
+  API (pro-openapi.debank.com) is api-key only and has no scope surface.
+schemes:
+- name: DeBank Connect
+  source: https://docs.cloud.debank.com/en/debank-connect/integration
+  grant_types_supported:
+  - authorization_code
+  - refresh_token
+  client_authentication: client_secret_basic (HTTP Basic with client_id/client_secret)
+  token_endpoint_auth_note: Documented as HTTPBasicAuth(client_id, client_secret) on a form-data POST.
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://debank.com/connect
+    tokenUrl: https://api.connect.debank.com/oauth/token
+    refreshUrl: https://api.connect.debank.com/oauth/token
+    response_type: code
+    state_supported: true
+    pkce: false
+    token_type: Bearer
+    refresh_token: true
+scopes:
+- scope: user:base:read
+  description: Read the authorizing user's base profile — address, web3_id, name, avatar, on-chain birth time and
+    follower value.
+  flows:
+  - authorizationCode
+  api: GET https://api.connect.debank.com/v1/user
+  docs: https://docs.cloud.debank.com/en/debank-connect/api/user-base-data
+  sources:
+  - https://docs.cloud.debank.com/en/debank-connect/integration
+- scope: user:chain:read
+  description: Read the authorizing user's on-chain portfolio data.
+  flows:
+  - authorizationCode
+  docs: https://docs.cloud.debank.com/en/debank-connect/api/user-chain-data
+  sources:
+  - https://docs.cloud.debank.com/en/debank-connect/integration
+- scope: user:social:read
+  description: Read the authorizing user's social following data.
+  flows:
+  - authorizationCode
+  docs: https://docs.cloud.debank.com/en/debank-connect/api/user-social-data
+  sources:
+  - https://docs.cloud.debank.com/en/debank-connect/integration
+scope_count: 3
+discovery:
+  oauth_authorization_server: null
+  openid_configuration: null
+  note: Neither /.well-known/oauth-authorization-server nor /.well-known/openid-configuration is served on api.connect.debank.com
+    (both 404, probed 2026-08-12), so the endpoints above are documented only in prose. Not OpenID Connect — no
+    id_token, no userinfo discovery.

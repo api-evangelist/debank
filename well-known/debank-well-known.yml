@@ -1,0 +1,298 @@
+generated: '2026-08-12'
+method: probed
+source: live GET of each path on every DeBank host
+hosts:
+- https://debank.com
+- https://cloud.debank.com
+- https://docs.cloud.debank.com
+- https://pro-openapi.debank.com
+- https://api.connect.debank.com
+- https://official.debank.com
+- https://open.debank.com
+documents_found: 0
+note: DeBank serves NO /.well-known/ documents on any host. debank.com, pro-openapi.debank.com and api.connect.debank.com
+  return a clean 404 for every path. cloud.debank.com, official.debank.com and open.debank.com answer 200 to every
+  /.well-known/* path with their SPA HTML shell — a catch-all, not a document, and verified as such by comparing
+  the body against the shell served for a nonsense path. docs.cloud.debank.com 307s. No WellKnown, SecurityTxt or
+  AgentCard pointer is emitted, because a recorded absence must not be scored as a presence.
+documents:
+- host: https://debank.com
+  path: /.well-known/security.txt
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/openid-configuration
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/api-catalog
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/agent-card.json
+  status: 404
+  document: false
+- host: https://debank.com
+  path: /.well-known/agent.json
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/security.txt
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/openid-configuration
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/api-catalog
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/agent-card.json
+  status: 404
+  document: false
+- host: https://pro-openapi.debank.com
+  path: /.well-known/agent.json
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/security.txt
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/openid-configuration
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/api-catalog
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/agent-card.json
+  status: 404
+  document: false
+- host: https://api.connect.debank.com
+  path: /.well-known/agent.json
+  status: 404
+  document: false
+- host: https://cloud.debank.com
+  path: /.well-known/security.txt
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/openid-configuration
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/api-catalog
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/agent-card.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://cloud.debank.com
+  path: /.well-known/agent.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/security.txt
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/openid-configuration
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/api-catalog
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/agent-card.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://official.debank.com
+  path: /.well-known/agent.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/security.txt
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/openid-configuration
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/api-catalog
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/agent-card.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://open.debank.com
+  path: /.well-known/agent.json
+  status: 200
+  document: false
+  note: HTTP 200 returning the single-page-app HTML shell, byte-identical to the shell served for a nonsense path.
+    Not a document — recorded as a miss.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/security.txt
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/openid-configuration
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/oauth-authorization-server
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/oauth-protected-resource
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/api-catalog
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/ai-plugin.json
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/agent-card.json
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.
+- host: https://docs.cloud.debank.com
+  path: /.well-known/agent.json
+  status: 307
+  document: false
+  note: Redirect issued by the GitBook docs host; no document served.

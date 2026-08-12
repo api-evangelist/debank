@@ -1,0 +1,34 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/readme/open-api
+limit_count: 1
+limits:
+- name: Pro Plan request rate
+  scope: per-key
+  window: 1s
+  limit: 100
+  burst: null
+  unit: requests
+  plan: Pro Plan
+  source: https://docs.cloud.debank.com/en/readme/open-api
+  note: Higher limits negotiated by mail to hello.cloud@debank.com.
+quota:
+  model: prepaid units
+  scope: per-account
+  exhaustion_status: 403
+  exhaustion_meaning: Forbidden - You've hit your capacity limit.
+  balance_endpoint: GET /v1/account/units
+  docs: https://docs.cloud.debank.com/en/readme/auxiliary-feature/units
+response_headers: []
+status_on_exhaustion: 429
+status_on_exhaustion_meaning: Too Many Requests - You've exceeded our ratelimit for api.
+retry_after: false
+headers_note: No RateLimit-*, X-RateLimit-* or Retry-After headers were returned on a live unauthenticated GET https://pro-openapi.debank.com/v1/chain/list
+  (HTTP 401, probed 2026-08-12). The response carried only CloudFront/gunicorn infrastructure headers. An agent
+  therefore has no runtime budget signal and must poll GET /v1/account/units out-of-band, or back off blindly on
+  429/403.
+method_headers: probed
+evidence:
+- url: https://pro-openapi.debank.com/v1/chain/list
+  status: 401
+  note: No rate-limit headers present in the response.

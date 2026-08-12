@@ -1,0 +1,112 @@
+generated: '2026-08-12'
+method: searched
+source: npm registry, PyPI, pkg.go.dev, RubyGems, crates.io, Packagist, github.com/DeBankDeFi
+official_sdk_count: 0
+note: 'DeBank ships NO first-party client library for the DeBank OpenAPI in any language. The docs contain curl
+  examples only and link to no SDK. The DeBankDeFi GitHub organisation (42 public repos) is blockchain infrastructure
+  — forks of go-ethereum, cometbft, cosmos-sdk, optimism, a DeFi chain rollup node — with no API client among them.
+  @debank/common is first-party but is a front-end constants/metadata package for the Rabby wallet UI, not a client
+  for the Cloud API. Every package that actually calls pro-openapi.debank.com is third-party and unmaintained: the
+  newest of them last shipped in 2023, four years after the API it wraps. Versions and dates below were read from
+  registry.npmjs.org on 2026-08-12.'
+registries_checked:
+- registry: npm
+  result: third-party clients only
+- registry: pypi
+  result: none
+  probed:
+  - debank
+  - debank-api
+  - pydebank
+  status: 404
+- registry: rubygems
+  result: none
+- registry: crates.io
+  result: none
+- registry: packagist
+  result: none
+- registry: maven-central
+  result: none
+- registry: pkg.go.dev
+  result: none
+- registry: nuget
+  result: none
+packages:
+- language: javascript
+  registry: npm
+  name: '@debank/common'
+  url: https://www.npmjs.com/package/@debank/common
+  install: npm install @debank/common
+  official: true
+  version: 0.3.60
+  published: '2024-03-22'
+  repository: https://github.com/DeBankDeFi/fe-common
+  covers_api: false
+  note: First-party (DeBankDeFi org) but NOT a Cloud API client — shared chain/token constants used by the Rabby
+    wallet front end. Last release 2024-03-22, over two years stale.
+- language: javascript
+  registry: npm
+  name: debank
+  url: https://www.npmjs.com/package/debank
+  install: npm install debank
+  official: false
+  version: 1.0.1
+  published: '2023-02-15'
+  repository: https://github.com/LuKks/debank
+  covers_api: true
+  note: Third-party wrapper for cloud.debank.com. Unmaintained since 2023-02.
+- language: javascript
+  registry: npm
+  name: debank-open-api
+  url: https://www.npmjs.com/package/debank-open-api
+  install: npm install debank-open-api
+  official: false
+  version: 1.0.1
+  published: '2021-12-30'
+  repository: https://github.com/eduardo-veras/debank-open-api
+  covers_api: true
+  note: Third-party Swagger-generated JS client. Unmaintained since 2021-12; predates most of the current contract.
+- language: typescript
+  registry: npm
+  name: '@yukaii/debank-types'
+  url: https://www.npmjs.com/package/@yukaii/debank-types
+  install: npm install @yukaii/debank-types
+  official: false
+  version: 1.0.1
+  published: '2022-01-01'
+  covers_api: true
+  note: Third-party TypeScript model definitions generated from the DeBank OpenAPI. Unmaintained since 2022-01.
+- language: javascript
+  registry: npm
+  name: debank-cli
+  url: https://www.npmjs.com/package/debank-cli
+  install: npm install -g debank-cli
+  official: false
+  version: 1.0.0
+  published: '2026-03-26'
+  repository: https://github.com/lolieatapple/debank-cli
+  covers_api: true
+  note: Third-party CLI over the Pro API. DeBank publishes no first-party CLI.
+- language: javascript
+  registry: npm
+  name: '@iqai/mcp-debank'
+  url: https://www.npmjs.com/package/@iqai/mcp-debank
+  install: npm install @iqai/mcp-debank
+  official: false
+  version: 2.2.0
+  published: '2026-07-04'
+  repository: https://github.com/BrainDAO/mcp-debank
+  covers_api: true
+  note: Third-party MCP server (BrainDAO). The most actively maintained DeBank client of any kind.
+- language: javascript
+  registry: npm
+  name: debank-re
+  url: https://www.npmjs.com/package/debank-re
+  install: npm install debank-re
+  official: false
+  version: 1.1.3
+  published: '2025-12-22'
+  repository: https://github.com/lukks/debank-re
+  covers_api: false
+  note: Third-party client for DeBank's INTERNAL, undocumented web API (reverse engineered) — not the published
+    Cloud contract. Recorded for completeness; not a supported integration path.

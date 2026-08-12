@@ -42,5 +42,33 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-DeBank is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+DeBank is a Web3 portfolio tracker and DeFi data platform operated by DeBank Global Pte. Ltd.
+(Singapore). Its developer arm, **DeBank Cloud**, sells access to that data core through a
+unit-metered REST API, an OAuth 2.0 sign-in service, and an Official Account messaging API.
+
+## APIs
+
+| API | Base | Contract |
+|---|---|---|
+| DeBank OpenAPI (Cloud Pro) | `https://pro-openapi.debank.com` | Swagger 2.0, 42 operations, 33 definitions — served live at `/swagger.json` |
+| DeBank Connect | `https://api.connect.debank.com` | OAuth 2.0 authorization code, 3 read scopes — documented in prose, no spec |
+
+- Developer portal: <https://cloud.debank.com/>
+- Documentation: <https://docs.cloud.debank.com/en>
+- API reference: <https://docs.cloud.debank.com/en/readme/api-pro-reference>
+- Changelog: <https://docs.cloud.debank.com/en/readme/changelog>
+- Terms of service: <https://docs.cloud.debank.com/en/terms-of-service>
+
+## What this profile found
+
+- **A real machine-readable contract at the API host root.** `https://pro-openapi.debank.com/swagger.json`
+  returns a complete Swagger 2.0 document — every operation has an `operationId`, a description and
+  tags. The docs site never links to it.
+- **A published `llms.txt`,** plus a Markdown twin of every documentation page (`.md` suffix), which
+  makes the docs unusually agent-readable for this sector.
+- **No first-party SDK, CLI or MCP server in any language.** Every DeBank client on npm is
+  third-party, and the newest one that wraps the documented API last shipped in 2023.
+- **No `/.well-known/` documents on any host,** no agent card, no status page, no security.txt, no
+  published compliance program, and no idempotency contract.
+- **No public pricing.** Access is metered in prepaid "units" bought from the authenticated
+  dashboard; the docs name a "Pro Plan" and its 100 req/s ceiling but publish no unit price.

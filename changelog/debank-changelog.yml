@@ -1,0 +1,78 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/readme/changelog
+scheme: dated entries (no semantic version)
+current_version: v1
+feeds:
+- kind: docs
+  url: https://docs.cloud.debank.com/en/readme/changelog
+- kind: docs
+  url: https://docs.cloud.debank.com/en/debank-connect/changelog
+  scope: DeBank Connect
+- kind: social
+  url: https://twitter.com/debankcloud
+  scope: breaking-change announcements
+cadence_note: Sparse. Eleven dated entries across the OpenAPI changelog spanning 2022-06 to 2026-01 — roughly two
+  or three a year, and only one entry in the eighteen months to 2026-08.
+entries:
+- date: '2026-01-23'
+  breaking: false
+  additions:
+  - app_protocol_list endpoint
+  highlights: Adds the App Protocol listing endpoint.
+- date: '2025-11-26'
+  breaking: false
+  additions:
+  - user_complex_app_list endpoint
+  highlights: Adds user complex app list.
+- date: '2025-01-13'
+  breaking: true
+  additions: []
+  highlights: Adjusted the range of supported chains — a change to the supported_chain_list surface.
+- date: '2023-08-01'
+  breaking: false
+  additions:
+  - pool endpoint
+  highlights: Adds the Pool API.
+- date: '2023-06-21'
+  breaking: false
+  additions:
+  - cex_dict and cex_id in user_history_list
+  highlights: Centralized-exchange attribution added to user history.
+- date: '2023-05-11'
+  breaking: false
+  additions:
+  - nft_p2p_borrower and nft_p2p_lender detail_types on PortfolioItemObject
+  highlights: NFT peer-to-peer lending positions modelled.
+- date: '2023-03-30'
+  breaking: false
+  additions:
+  - Airdrop name on PortfolioItemObject
+  highlights: Airdrop positions.
+- date: '2023-03-09'
+  breaking: false
+  additions:
+  - nft_common, nft_lending, nft_fraction detail_types on PortfolioItemObject
+  highlights: NFT portfolio item types.
+- date: '2022-10-11'
+  breaking: true
+  additions: []
+  highlights: Deprecated "Get contract address list of a protocol".
+- date: '2022-08-01'
+  breaking: false
+  additions:
+  - position_index field on PortfolioItemObject
+  highlights: ''
+- date: '2022-06-28'
+  breaking: true
+  additions: []
+  highlights: user_all_history_list return format aligned with /v1/user/history_hist.
+- date: '2022-06-15'
+  breaking: false
+  additions:
+  - pool object field on PortfolioItemObject
+  highlights: ''
+connect_entries:
+- date: '2023-11-17'
+  breaking: true
+  highlights: Standardized the token/refresh_token response format — the data wrapper field was removed.

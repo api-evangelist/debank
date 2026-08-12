@@ -1,0 +1,112 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.cloud.debank.com/en/readme/open-api
+authentication:
+  style: api-key-header
+  header: AccessKey
+  applies_to: https://pro-openapi.debank.com
+  artifact: authentication/debank-authentication.yml
+  second_surface:
+    style: oauth2-bearer
+    header: 'Authorization: Bearer <access_token>'
+    applies_to: https://api.connect.debank.com
+    artifact: scopes/debank-scopes.yml
+idempotency:
+  supported: false
+  evidence: No idempotency key/header appears in the published Swagger, and no docs page under docs.cloud.debank.com
+    mentions idempotency. The two write endpoints (official message send, group send) and the wallet pre-execution
+    endpoints define no de-duplication contract.
+  checked: '2026-08-12'
+pagination:
+  supported: true
+  style: time-cursor + fixed page size
+  params:
+  - name: start_time
+    in: query
+    meaning: Unix timestamp; the returned history list is earlier than this time
+    operations:
+    - get_user_history_list
+    - get_user_all_history_list
+  - name: page_count
+    in: query
+    meaning: Number of entries returned; maximum is 20
+    operations:
+    - get_user_history_list
+    - get_user_all_history_list
+  - name: start
+    in: query
+    meaning: Offset
+    operations:
+    - get_token_top_holders
+  - name: limit
+    in: query
+    meaning: Page size
+    operations:
+    - get_token_top_holders
+  response_fields: []
+  note: No cursor token, no next-link and no total count are returned; the caller re-issues with an earlier start_time.
+  source: https://docs.cloud.debank.com/en/readme/api-pro-reference/user
+field_expansion:
+  supported: true
+  style: boolean flag
+  params:
+  - name: is_all
+    meaning: When true, protocol-derived tokens are included alongside wallet tokens
+  note: Not a general sparse-fieldset/expand mechanism — a per-operation boolean.
+metadata:
+  supported: false
+  note: No user-defined metadata fields on any resource.
+request_tracing:
+  request_id_header: null
+  observed_response_headers:
+  - x-amz-cf-id
+  - via
+  - x-amz-cf-pop
+  - x-cache
+  note: No first-party correlation id. The only per-request identifier returned is the CloudFront x-amz-cf-id, which
+    is edge infrastructure, not an application request id. Observed on a live 401 from https://pro-openapi.debank.com/v1/chain/list
+    on 2026-08-12.
+  method: probed
+versioning:
+  style: uri-path
+  current: v1
+  note: Paths are versioned in the URI (/v1/...). A newer unversioned /cloud/* family (chain list, protocol list,
+    token, contract, collection) coexists with /v1 in the same contract.
+  artifact: lifecycle/debank-lifecycle.yml
+error_envelope:
+  api_level: HTTP status code only — no JSON error body documented
+  wallet_pre_exec:
+    code: integer
+    message: string
+  problem_json: false
+  artifact: errors/debank-problem-types.yml
+rate_limit_signaling:
+  response_headers: []
+  status_on_exhaustion: 429
+  note: No RateLimit-*/X-RateLimit-*/Retry-After headers were returned on a live unauthenticated request. Remaining
+    quota is read out-of-band from GET /v1/account/units.
+  artifact: rate-limits/debank-rate-limits.yml
+content_types:
+  produces:
+  - application/json
+  consumes:
+  - application/json
+cors:
+  allow_origin: '*'
+  allow_methods:
+  - GET
+  - POST
+  - PATCH
+  - PUT
+  - DELETE
+  - OPTIONS
+  allow_headers:
+  - X-Requested-With
+  - Content-Type
+  - account
+  - X-Client
+  - X-Version
+  - source
+  - AccessKey
+  method: probed
+  observed: '2026-08-12'

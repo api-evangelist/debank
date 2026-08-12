@@ -1,0 +1,53 @@
+generated: '2026-08-12'
+method: searched
+source: openapi/debank-pro-openapi.yml
+docs: https://docs.cloud.debank.com/en/readme/open-api
+note: Two independent auth surfaces. The DeBank Cloud Pro API is api-key only (AccessKey header, no scopes, no expiry,
+  no rotation policy published). DeBank Connect is a separate OAuth 2.0 authorization-code service on api.connect.debank.com
+  that is NOT described by the published Swagger, so it was searched from the integration guide rather than derived.
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: accessKey
+  type: apiKey
+  in: header
+  parameter: AccessKey
+  applies_to: https://pro-openapi.debank.com
+  sources:
+  - openapi/debank-pro-openapi.yml
+  issued_at: https://cloud.debank.com/
+  description: 'Prepaid, unit-metered access key issued from the DeBank Cloud dashboard. Applied globally — the
+    spec sets security: [{accessKey: []}] at the root, so all 42 operations require it.'
+  expiry: null
+  rotation_policy: null
+  scopes: []
+- name: DeBank Connect
+  type: oauth2
+  applies_to: https://api.connect.debank.com
+  sources:
+  - https://docs.cloud.debank.com/en/debank-connect/integration
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://debank.com/connect
+    tokenUrl: https://api.connect.debank.com/oauth/token
+    scopes:
+      user:base:read: User base info
+      user:chain:read: User on-chain portfolio data
+      user:social:read: User social info
+  client_authentication: client_secret_basic
+  token_type: Bearer
+  refresh_token: true
+  pkce: false
+  state_recommended: true
+  artifact: scopes/debank-scopes.yml
+gaps:
+- No /.well-known/oauth-authorization-server or /.well-known/openid-configuration on any host (404, probed 2026-08-12).
+- No key rotation, expiry or revocation policy published for the AccessKey.
+- No PKCE support documented for the public-client case.
+- The 401/403 responses are documented on the error-code page but absent from the machine-readable contract.
