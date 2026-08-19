@@ -1,0 +1,1015 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DeBank OpenAPI",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cloud",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_chain_list_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud/chain/list"
+          }
+        },
+        {
+          "info": {
+            "name": "get_get_collection_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud/collection"
+          }
+        },
+        {
+          "info": {
+            "name": "get_get_contract_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud/contract"
+          }
+        },
+        {
+          "info": {
+            "name": "get_protocol_list_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud/protocol/list"
+          }
+        },
+        {
+          "info": {
+            "name": "get_get_token_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud/token"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_unit_api_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/account/units"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "App Protocol",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_app_protocol_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/app_protocol/list"
+          },
+          "docs": "Get list of apps on supported app chains"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Chain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_chain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/chain",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          },
+          "docs": "Get chain info by id"
+        },
+        {
+          "info": {
+            "name": "get_chain_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/chain/list"
+          },
+          "docs": "Get supported chain list"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "official",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "post_group_send_api_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/official/group_send"
+          }
+        },
+        {
+          "info": {
+            "name": "post_message_send_api_view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/official/message/send"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/pool",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "pool id"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "chain id"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Protocol",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_protocol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "protocol id"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_protocol_all_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/all_list"
+          }
+        },
+        {
+          "info": {
+            "name": "get_protocol_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/list",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/token",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Ethereum Address or native token id"
+              }
+            ]
+          },
+          "docs": "Get token by address"
+        },
+        {
+          "info": {
+            "name": "get_token_history_price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/token/history_price",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Ethereum Address or native token id"
+              },
+              {
+                "name": "date_at",
+                "value": "",
+                "type": "query",
+                "description": "date"
+              }
+            ]
+          },
+          "docs": "Get token history price by address"
+        },
+        {
+          "info": {
+            "name": "get_token_list_by_ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/token/list_by_ids",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "List of token addresses, up to 100"
+              }
+            ]
+          },
+          "docs": "Bulk token fetching by address"
+        },
+        {
+          "info": {
+            "name": "get_token_top_holders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/token/top_holders",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Ethereum Address or native token id"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get top token holders"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_user_all_complex_protocol_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/all_complex_protocol_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Get list of protocols with user portfolio details on all supported chains"
+        },
+        {
+          "info": {
+            "name": "get_user_history_all_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/all_history_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "query",
+                "description": "TokenID"
+              },
+              {
+                "name": "coin_id",
+                "value": "",
+                "type": "query",
+                "description": "CoinID"
+              },
+              {
+                "name": "page_count",
+                "value": "",
+                "type": "query",
+                "description": "PageCount"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "StartTime"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Get user all history list"
+        },
+        {
+          "info": {
+            "name": "get_user_nft_all_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/all_nft_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "is_all",
+                "value": "",
+                "type": "query",
+                "description": "If true, all tokens are returned"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Get user nft list on all supported chains"
+        },
+        {
+          "info": {
+            "name": "get_user_all_simple_protocol_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/all_simple_protocol_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Stats the user's protocol assets on all supported chains"
+        },
+        {
+          "info": {
+            "name": "get_user_token_all_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/all_token_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "is_all",
+                "value": "",
+                "type": "query",
+                "description": "If true, all tokens are returned, including protocol-derived tokens"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Get user token balance"
+        },
+        {
+          "info": {
+            "name": "get_user_chain_balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/chain_balance",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          },
+          "docs": "Get the net assets of a chain"
+        },
+        {
+          "info": {
+            "name": "get_user_chain_net_curve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/chain_net_curve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          },
+          "docs": "Get the chain net curve"
+        },
+        {
+          "info": {
+            "name": "get_user_complex_app_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/complex_app_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              }
+            ]
+          },
+          "docs": "Get list of apps with user portfolio details on all supported app chains"
+        },
+        {
+          "info": {
+            "name": "get_user_complex_protocol_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/complex_protocol_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          },
+          "docs": "Get list of protocols with user portfolio details on a chain"
+        },
+        {
+          "info": {
+            "name": "get_user_history_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/history_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "query",
+                "description": "TokenID"
+              },
+              {
+                "name": "coin_id",
+                "value": "",
+                "type": "query",
+                "description": "CoinID"
+              },
+              {
+                "name": "page_count",
+                "value": "",
+                "type": "query",
+                "description": "PageCount"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "StartTime"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Get user history list"
+        },
+        {
+          "info": {
+            "name": "get_user_nft_authorized_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/nft_authorized_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_user_nft_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/nft_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "is_all",
+                "value": "",
+                "type": "query",
+                "description": "If true, all tokens are returned"
+              }
+            ]
+          },
+          "docs": "Get user nft list"
+        },
+        {
+          "info": {
+            "name": "get_user_protocol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/protocol",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "protocol_id",
+                "value": "",
+                "type": "query",
+                "description": "protocol id"
+              }
+            ]
+          },
+          "docs": "Get the user's portfolio in the protocol"
+        },
+        {
+          "info": {
+            "name": "get_user_simple_protocol_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/simple_protocol_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          },
+          "docs": "Stats the user's protocol assets on a chain"
+        },
+        {
+          "info": {
+            "name": "get_user_token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/token",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "query",
+                "description": "token id"
+              }
+            ]
+          },
+          "docs": "Get user token balance"
+        },
+        {
+          "info": {
+            "name": "get_user_token_authorized_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/token_authorized_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              }
+            ]
+          },
+          "docs": "Show the user's risk exposure of approved token on a chain"
+        },
+        {
+          "info": {
+            "name": "get_user_token_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/token_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainID"
+              },
+              {
+                "name": "is_all",
+                "value": "",
+                "type": "query",
+                "description": "If true, all tokens are returned, including protocol-derived tokens"
+              }
+            ]
+          },
+          "docs": "Get user token balance"
+        },
+        {
+          "info": {
+            "name": "get_user_total_balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/total_balance",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              }
+            ]
+          },
+          "docs": "Get net assets on multiple chains, including tokens and protocols"
+        },
+        {
+          "info": {
+            "name": "get_total_chain_net_curve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/total_net_curve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "User Address"
+              },
+              {
+                "name": "chain_ids",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID List"
+              }
+            ]
+          },
+          "docs": "Get the chain net curve"
+        },
+        {
+          "info": {
+            "name": "get_user_chain_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/user/used_chain_list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Address"
+              }
+            ]
+          },
+          "docs": "Get user chain list"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "post_explain_tx",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/wallet/explain_tx"
+          },
+          "docs": "explain tx"
+        },
+        {
+          "info": {
+            "name": "get_gas_market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/wallet/gas_market",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "ChainId"
+              },
+              {
+                "name": "custom_price",
+                "value": "",
+                "type": "query",
+                "description": "CustomPrice"
+              }
+            ]
+          },
+          "docs": "gas market"
+        },
+        {
+          "info": {
+            "name": "post_pre_exec_tx",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/wallet/pre_exec_tx"
+          },
+          "docs": "pre exec tx"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

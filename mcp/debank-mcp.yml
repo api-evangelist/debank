@@ -2,10 +2,11 @@ generated: '2026-08-12'
 method: derived
 status: candidate
 source: openapi/debank-pro-openapi.yml
-note: DeBank publishes no first-party MCP server. Several third-party servers wrap the DeBank Cloud API (demcp/demcp-debank-mcp,
-  caiovicentino/debank-mcp-server, @iqai/mcp-debank on npm) — none is operated by DeBank Global Pte. Ltd., and all
-  require the user to supply their own DeBank Cloud AccessKey. The tool list below is a candidate derived one-to-one
-  from the published Swagger operations; it is not a server DeBank runs.
+note: DeBank publishes no first-party MCP server. Several third-party servers wrap the DeBank Cloud API
+  (demcp/demcp-debank-mcp, caiovicentino/debank-mcp-server, @iqai/mcp-debank on npm) — none is operated
+  by DeBank Global Pte. Ltd., and all require the user to supply their own DeBank Cloud AccessKey. The
+  tool list below is a candidate derived one-to-one from the published Swagger operations; it is not a
+  server DeBank runs.
 server:
   name: debank
   transport: http
@@ -235,3 +236,9 @@ tools:
   category: Wallet
   source_operation: openapi/debank-pro-openapi.yml#post_pre_exec_tx
   http: POST /v1/wallet/pre_exec_tx
+deployment:
+  mode: none
+  verified: derived
+  tools: 42
+  checked: '2026-08-12'
+  source: catalog MCP census
