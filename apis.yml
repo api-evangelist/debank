@@ -16,6 +16,19 @@ specificationVersion: '0.23'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
+- Web3
+- DeFi
+- Blockchain
+- Crypto
+- Portfolio Tracking
+- On-Chain Data
+- Wallets
+- token-data
+- NFT
+- Ethereum
+- Authentication
+- Market Data
+tags_raw:
 - web3
 - defi
 - blockchain
@@ -38,6 +51,14 @@ apis:
   humanURL: https://docs.cloud.debank.com/en/readme/open-api
   baseURL: https://pro-openapi.debank.com
   tags:
+  - Web3
+  - DeFi
+  - Blockchain
+  - Portfolio Tracking
+  - On-Chain Data
+  - token-data
+  - NFT
+  tags_raw:
   - web3
   - defi
   - blockchain
@@ -63,6 +84,11 @@ apis:
   humanURL: https://docs.cloud.debank.com/en/debank-connect/integration
   baseURL: https://api.connect.debank.com
   tags:
+  - Authentication
+  - Identity
+  - Web3
+  - Social
+  tags_raw:
   - oauth
   - identity
   - web3
