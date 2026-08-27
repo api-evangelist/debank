@@ -42,45 +42,12 @@ tags_raw:
 - oauth
 - market-data
 apis:
-- name: DeBank OpenAPI
-  description: The DeBank Cloud Pro API — a Swagger 2.0 contract published at the API host root covering chain and protocol
-    metadata, pool and token data, historical token prices, user portfolio reads (token lists, NFT lists, complex protocol
-    positions, net-worth curves, transaction history, token/NFT approvals), wallet helpers (transaction pre-execution, transaction
-    explanation, gas market), unit-balance accounting, and Official Account messaging. Authenticated with an AccessKey header
-    and metered in prepaid units.
-  humanURL: https://docs.cloud.debank.com/en/readme/open-api
-  baseURL: https://pro-openapi.debank.com
-  tags:
-  - Web3
-  - DeFi
-  - Blockchain
-  - Portfolio Tracking
-  - On-Chain Data
-  - token-data
-  - NFT
-  tags_raw:
-  - web3
-  - defi
-  - blockchain
-  - portfolio-tracking
-  - on-chain-data
-  - token-data
-  - nft
-  properties:
-  - type: OpenAPI
-    url: openapi/debank-pro-openapi.yml
-  - type: Documentation
-    url: https://docs.cloud.debank.com/en/readme/open-api
-  - type: APIReference
-    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
-  - type: ErrorCatalog
-    url: errors/debank-problem-types.yml
-  - type: Overlay
-    url: overlays/debank-pro-openapi-overlay.yaml
 - name: DeBank Connect
-  description: OAuth 2.0 authorization-code sign-in for dApps. After a user authorizes, the dApp exchanges the code at api.connect.debank.com/oauth/token
-    using HTTP Basic client credentials and reads the user's base profile (web3_id, avatar, on-chain birth date, follower
-    value), on-chain portfolio data, and social following data against three read-only scopes.
+  description: >-
+    OAuth 2.0 authorization-code sign-in for dApps. After a user authorizes, the dApp exchanges the code
+    at api.connect.debank.com/oauth/token using HTTP Basic client credentials and reads the user's base
+    profile (web3_id, avatar, on-chain birth date, follower value), on-chain portfolio data, and social
+    following data against three read-only scopes.
   humanURL: https://docs.cloud.debank.com/en/debank-connect/integration
   baseURL: https://api.connect.debank.com
   tags:
@@ -100,12 +67,174 @@ apis:
     url: https://docs.cloud.debank.com/en/debank-connect/api
   - type: OAuthScopes
     url: scopes/debank-scopes.yml
+- aid: debank:debank-account-api
+  name: DeBank Account API
+  description: The Account API from DeBank — 1 operation(s) for account.
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-account-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-app-protocol-api
+  name: DeBank App Protocol API
+  description: Get app info
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - App Protocol
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-app-protocol-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-chain-api
+  name: DeBank Chain API
+  description: Get chain info
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - Chain
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-chain-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-cloud-api
+  name: DeBank Cloud API
+  description: The cloud API from DeBank — 5 operation(s) for cloud.
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - cloud
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-cloud-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-official-api
+  name: DeBank Official API
+  description: The official API from DeBank — 2 operation(s) for official.
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - official
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-official-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-pool-api
+  name: DeBank Pool API
+  description: Get pool info
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - Pool
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-pool-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-protocol-api
+  name: DeBank Protocol API
+  description: Get protocol info
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - Protocol
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-protocol-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-token-api
+  name: DeBank Token API
+  description: Get token info
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-token-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-user-api
+  name: DeBank User API
+  description: Get user info such as total balance, token list, and portfolio in each protocol
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
+- aid: debank:debank-wallet-api
+  name: DeBank Wallet API
+  description: It is not stable at present. If you want to use it, please contact the official first.
+  humanURL: https://docs.cloud.debank.com/en/readme/open-api
+  baseURL: https://pro-openapi.debank.com
+  tags:
+  - Wallet
+  properties:
+  - type: OpenAPI
+    url: openapi/debank-wallet-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cloud.debank.com/en/readme/open-api
+  - type: APIReference
+    url: https://docs.cloud.debank.com/en/readme/api-pro-reference
+  - type: ErrorCatalog
+    url: errors/debank-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/debank-pro-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/debank-agentic-access.yml
 - type: DomainSecurity
