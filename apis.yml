@@ -9,6 +9,18 @@ description: DeBank is a Web3 portfolio tracker and DeFi data platform operated 
   in prepaid "units" bought from the DeBank Cloud dashboard, keyed by an AccessKey header, with a 14-day free trial and
   a documented 100 requests/second ceiling on the Pro plan.
 url: https://raw.githubusercontent.com/api-evangelist/debank/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://static-assets.debank.com/files/e8aeedfa-2679-429e-ad80-b469f5ca96c2.png
 x-type: company
 x-source: harvest:secondary-market
