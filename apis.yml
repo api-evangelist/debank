@@ -32,12 +32,12 @@ tags:
 - DeFi
 - Blockchain
 - Crypto
-- Portfolio Tracking
-- On-Chain Data
+- portfolio-tracking
+- on-chain-data
 - Wallets
 - token-data
-- NFT
-- Ethereum
+- nft
+- ethereum
 - Authentication
 - Market Data
 tags_raw:
@@ -66,7 +66,7 @@ apis:
   - Authentication
   - Identity
   - Web3
-  - Social
+  - social
   tags_raw:
   - oauth
   - identity
@@ -133,6 +133,8 @@ apis:
   humanURL: https://docs.cloud.debank.com/en/readme/open-api
   baseURL: https://pro-openapi.debank.com
   tags:
+  - Cloud
+  tags_raw:
   - cloud
   properties:
   - type: OpenAPI
@@ -229,6 +231,8 @@ apis:
   humanURL: https://docs.cloud.debank.com/en/readme/open-api
   baseURL: https://pro-openapi.debank.com
   tags:
+  - Wallets
+  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
