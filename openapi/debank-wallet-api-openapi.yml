@@ -1,0 +1,75 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Wallet API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: Wallet
+  description: It is not stable at present. If you want to use it, please contact the official first.
+paths:
+  /v1/wallet/explain_tx:
+    post:
+      responses:
+        '200':
+          description: explain typed data
+      description: explain tx
+      operationId: post_explain_tx
+      tags:
+      - Wallet
+  /v1/wallet/gas_market:
+    get:
+      responses:
+        '200':
+          description: return gas list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/gasprice'
+      description: gas market
+      operationId: get_gas_market
+      parameters:
+      - name: chain_id
+        in: query
+        required: true
+        description: ChainId
+        schema:
+          type: string
+      - name: custom_price
+        in: query
+        description: CustomPrice
+        schema:
+          type: string
+          default: 0
+      tags:
+      - Wallet
+  /v1/wallet/pre_exec_tx:
+    post:
+      responses:
+        '200':
+          description: pre exec tx
+      description: pre exec tx
+      operationId: post_pre_exec_tx
+      tags:
+      - Wallet
+components:
+  schemas:
+    gasprice:
+      properties:
+        level:
+          type: string
+          example: slow
+        price:
+          type: integer
+          example: 30000000000
+      type: object
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey

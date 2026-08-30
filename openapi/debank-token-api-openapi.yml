@@ -1,0 +1,183 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Token API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: Token
+  description: Get token info
+paths:
+  /v1/token:
+    get:
+      responses:
+        '200':
+          description: return token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+      description: Get token by address
+      operationId: get_token
+      parameters:
+      - name: chain_id
+        in: query
+        required: true
+        description: ChainID
+        schema:
+          type: string
+      - name: id
+        in: query
+        required: true
+        description: Ethereum Address or native token id
+        schema:
+          type: string
+      tags:
+      - Token
+  /v1/token/history_price:
+    get:
+      responses:
+        '200':
+          description: return token price
+          content:
+            application/json:
+              schema:
+                type: number
+      description: Get token history price by address
+      operationId: get_token_history_price
+      parameters:
+      - name: chain_id
+        in: query
+        required: true
+        description: ChainID
+        schema:
+          type: string
+      - name: id
+        in: query
+        required: true
+        description: Ethereum Address or native token id
+        schema:
+          type: string
+      - name: date_at
+        in: query
+        required: true
+        description: date
+        schema:
+          type: string
+      tags:
+      - Token
+  /v1/token/list_by_ids:
+    get:
+      responses:
+        '200':
+          description: token list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Token'
+      description: Bulk token fetching by address
+      operationId: get_token_list_by_ids
+      parameters:
+      - name: chain_id
+        in: query
+        required: true
+        description: ChainID
+        schema:
+          type: string
+      - name: ids
+        in: query
+        required: true
+        description: List of token addresses, up to 100
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+      tags:
+      - Token
+  /v1/token/top_holders:
+    get:
+      responses:
+        '200':
+          description: return token
+      description: Get top token holders
+      operationId: get_token_top_holders
+      parameters:
+      - name: chain_id
+        in: query
+        required: true
+        description: ChainID
+        schema:
+          type: string
+      - name: id
+        in: query
+        required: true
+        description: Ethereum Address or native token id
+        schema:
+          type: string
+      - name: start
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      tags:
+      - Token
+components:
+  schemas:
+    Token:
+      properties:
+        id:
+          type: string
+          description: Ethereum Address or native token id
+          example: '0xdac17f958d2ee523a2206206994597c13d831ec7'
+        chain:
+          type: string
+          description: Chain Name
+          example: eth
+        name:
+          type: string
+          example: Tether USD
+        symbol:
+          type: string
+          example: USDT
+        display_symbol:
+          type: string
+          example: USDT
+        optimized_symbol:
+          type: string
+          example: USDT
+        decimals:
+          type: integer
+          example: 6
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/token/logo_url/0xdac17f958d2ee523a2206206994597c13d831ec7/3c1a718331e468abe1fc2ebe319f6c77.png
+        is_verified:
+          type: boolean
+          example: true
+        is_core:
+          type: boolean
+          example: true
+        price:
+          type: number
+          description: USD price.Price of 0 means no data
+          example: 1.01
+        time_at:
+          type: integer
+          description: The timestamp when the current token was deployed on the blockchain.
+          example: 1511829681
+      type: object
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey

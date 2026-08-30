@@ -1,0 +1,103 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Protocol API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: Protocol
+  description: Get protocol info
+paths:
+  /v1/protocol:
+    get:
+      responses:
+        '200':
+          description: return protocol
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Protocol'
+      operationId: get_protocol
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: protocol id
+        schema:
+          type: string
+      tags:
+      - Protocol
+  /v1/protocol/all_list:
+    get:
+      responses:
+        '200':
+          description: return protocol list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Protocol'
+      operationId: get_protocol_all_list
+      tags:
+      - Protocol
+  /v1/protocol/list:
+    get:
+      responses:
+        '200':
+          description: return protocol list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Protocol'
+      operationId: get_protocol_list
+      parameters:
+      - name: chain_id
+        in: query
+        required: true
+        description: ChainID
+        schema:
+          type: string
+      tags:
+      - Protocol
+components:
+  schemas:
+    Protocol:
+      properties:
+        id:
+          type: string
+          description: protocol id
+          example: compound
+        chain:
+          type: string
+          description: chain name
+          example: eth
+        name:
+          type: string
+          example: Compound
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+        site_url:
+          type: string
+          description: Prioritize websites that can be interacted with, not official websites
+          example: https://app.compound.finance
+        has_supported_portfolio:
+          type: boolean
+          description: Is portfolio already supported
+          example: true
+        tvl:
+          type: integer
+          description: User deposit value in this protocol
+          example: 10000
+      type: object
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey

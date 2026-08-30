@@ -1,0 +1,158 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Chain API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: Chain
+  description: Get chain info
+paths:
+  /v1/chain:
+    get:
+      responses:
+        '200':
+          description: return chain
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chain'
+      description: Get chain info by id
+      operationId: get_chain
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: ChainID
+        schema:
+          type: string
+          enum:
+          - merlin
+          - taiko
+          - celo
+          - zircuit
+          - xdc
+          - sonic
+          - scrl
+          - soneium
+          - avax
+          - arb
+          - katana
+          - cro
+          - blast
+          - sophon
+          - citrea
+          - dbk
+          - core
+          - bera
+          - bsc
+          - sei
+          - cfx
+          - g0
+          - uni
+          - eth
+          - hemi
+          - bb
+          - world
+          - tempo
+          - kite
+          - morph
+          - zora
+          - mnt
+          - kava
+          - zeta
+          - lisk
+          - matic
+          - rsk
+          - xlayer
+          - abs
+          - hyper
+          - metis
+          - mode
+          - btr
+          - megaeth
+          - story
+          - chiliz
+          - flr
+          - plume
+          - era
+          - op
+          - manta
+          - klay
+          - opbnb
+          - bob
+          - monad
+          - ethlink
+          - plasma
+          - gravity
+          - b2
+          - hood
+          - ink
+          - lens
+          - fuse
+          - itze
+          - base
+          - ron
+          - xdai
+          - linea
+          - ape
+          - stable
+          - wemix
+          - cyber
+          - frax
+      tags:
+      - Chain
+  /v1/chain/list:
+    get:
+      responses:
+        '200':
+          description: return chain list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chain'
+      description: Get supported chain list
+      operationId: get_chain_list
+      tags:
+      - Chain
+components:
+  schemas:
+    Chain:
+      properties:
+        id:
+          type: string
+          description: chain id
+          example: eth
+        community_id:
+          type: integer
+          description: Community-identified id
+          example: 1
+        name:
+          type: string
+          example: Ethereum
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/chain/logo_url/eth/6e0cd1f895af9836ee8c32cfc03bc279.png
+        native_token_id:
+          type: string
+          description: native token
+          example: eth
+        wrapped_token_id:
+          type: string
+          description: the erc20-wrapped of native token
+          example: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+        is_support_balance_change:
+          type: boolean
+          description: 'Whether or not the chain support token balance '
+          example: true
+      type: object
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey

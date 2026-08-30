@@ -1,0 +1,72 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Pool API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: Pool
+  description: Get pool info
+paths:
+  /v1/pool:
+    get:
+      responses:
+        '200':
+          description: return pool
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pool'
+      operationId: get_pool
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: pool id
+        schema:
+          type: string
+      - name: chain_id
+        in: query
+        required: true
+        description: chain id
+        schema:
+          type: string
+      tags:
+      - Pool
+components:
+  schemas:
+    Pool:
+      properties:
+        pool_id:
+          type: string
+          description: pool id
+          example: '0x00000000219ab540356cbb839cbe05303d7705fa'
+        protocol_id:
+          type: string
+          description: protocol id
+          example: eth2
+        chain:
+          type: string
+          description: chain name
+          example: eth
+        name:
+          type: string
+          example: Staked
+        contract_ids:
+          type: array
+          items:
+            type: string
+            description: contract_ids
+            example: ''
+        stats:
+          type: object
+          description: ''
+      type: object
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey

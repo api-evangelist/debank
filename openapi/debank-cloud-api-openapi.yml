@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Cloud API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: cloud
+paths:
+  /cloud/chain/list:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_chain_list_view
+      tags:
+      - cloud
+  /cloud/collection:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_get_collection_view
+      tags:
+      - cloud
+  /cloud/contract:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_get_contract_view
+      tags:
+      - cloud
+  /cloud/protocol/list:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_protocol_list_view
+      tags:
+      - cloud
+  /cloud/token:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: get_get_token_view
+      tags:
+      - cloud
+components:
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey

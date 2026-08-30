@@ -1,0 +1,60 @@
+openapi: 3.2.0
+info:
+  title: DeBank Open Account API
+  version: '1.0'
+  description: Build for DeFi Developers.
+servers:
+- url: /
+security:
+- accessKey: []
+tags:
+- name: Account
+paths:
+  /v1/account/units:
+    get:
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unit'
+        '400':
+          description: Invalid account
+      operationId: get_unit_api_list
+      tags:
+      - Account
+components:
+  schemas:
+    Stat:
+      properties:
+        usage:
+          type: integer
+          description: daily usage
+          example: 10000
+        remains:
+          type: integer
+          description: daily remains
+          example: 10000
+        date:
+          type: string
+          description: date
+          example: '2022-01-02'
+      type: object
+    Unit:
+      properties:
+        balance:
+          type: integer
+          description: unit balance
+          example: 10000
+        stats:
+          type: array
+          description: unit stats
+          items:
+            $ref: '#/components/schemas/Stat'
+      type: object
+  securitySchemes:
+    accessKey:
+      type: apiKey
+      in: header
+      name: AccessKey
