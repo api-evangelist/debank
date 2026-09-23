@@ -37,6 +37,8 @@ paths:
           type: string
       tags:
       - Token
+      summary: Get token
+      x-summary-source: derived
   /v1/token/history_price:
     get:
       responses:
@@ -69,6 +71,8 @@ paths:
           type: string
       tags:
       - Token
+      summary: Get token history price
+      x-summary-source: derived
   /v1/token/list_by_ids:
     get:
       responses:
@@ -101,6 +105,8 @@ paths:
             type: string
       tags:
       - Token
+      summary: Get token list by ids
+      x-summary-source: derived
   /v1/token/top_holders:
     get:
       responses:
@@ -131,6 +137,8 @@ paths:
           type: integer
       tags:
       - Token
+      summary: Get token top holders
+      x-summary-source: derived
 components:
   schemas:
     Token:

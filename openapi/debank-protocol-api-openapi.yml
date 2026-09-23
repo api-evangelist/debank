@@ -30,6 +30,8 @@ paths:
           type: string
       tags:
       - Protocol
+      summary: Get protocol
+      x-summary-source: derived
   /v1/protocol/all_list:
     get:
       responses:
@@ -44,6 +46,8 @@ paths:
       operationId: get_protocol_all_list
       tags:
       - Protocol
+      summary: Get protocol all list
+      x-summary-source: derived
   /v1/protocol/list:
     get:
       responses:
@@ -65,6 +69,8 @@ paths:
           type: string
       tags:
       - Protocol
+      summary: Get protocol list
+      x-summary-source: derived
 components:
   schemas:
     Protocol:

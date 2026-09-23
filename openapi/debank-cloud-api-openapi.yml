@@ -8,7 +8,7 @@ servers:
 security:
 - accessKey: []
 tags:
-- name: cloud
+- name: Cloud
 paths:
   /cloud/chain/list:
     get:
@@ -17,7 +17,9 @@ paths:
           description: Success
       operationId: get_chain_list_view
       tags:
-      - cloud
+      - Cloud
+      summary: Get chain list view
+      x-summary-source: derived
   /cloud/collection:
     get:
       responses:
@@ -25,7 +27,9 @@ paths:
           description: Success
       operationId: get_get_collection_view
       tags:
-      - cloud
+      - Cloud
+      summary: Get get collection view
+      x-summary-source: derived
   /cloud/contract:
     get:
       responses:
@@ -33,7 +37,9 @@ paths:
           description: Success
       operationId: get_get_contract_view
       tags:
-      - cloud
+      - Cloud
+      summary: Get get contract view
+      x-summary-source: derived
   /cloud/protocol/list:
     get:
       responses:
@@ -41,7 +47,9 @@ paths:
           description: Success
       operationId: get_protocol_list_view
       tags:
-      - cloud
+      - Cloud
+      summary: Get protocol list view
+      x-summary-source: derived
   /cloud/token:
     get:
       responses:
@@ -49,7 +57,9 @@ paths:
           description: Success
       operationId: get_get_token_view
       tags:
-      - cloud
+      - Cloud
+      summary: Get get token view
+      x-summary-source: derived
 components:
   securitySchemes:
     accessKey:

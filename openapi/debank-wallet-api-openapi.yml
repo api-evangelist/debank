@@ -20,6 +20,8 @@ paths:
       operationId: post_explain_tx
       tags:
       - Wallet
+      summary: Post explain tx
+      x-summary-source: derived
   /v1/wallet/gas_market:
     get:
       responses:
@@ -48,6 +50,8 @@ paths:
           default: 0
       tags:
       - Wallet
+      summary: Get gas market
+      x-summary-source: derived
   /v1/wallet/pre_exec_tx:
     post:
       responses:
@@ -57,6 +61,8 @@ paths:
       operationId: post_pre_exec_tx
       tags:
       - Wallet
+      summary: Post pre exec tx
+      x-summary-source: derived
 components:
   schemas:
     gasprice:

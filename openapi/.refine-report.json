@@ -1,0 +1,42 @@
+{
+  "provider": "debank",
+  "sources": [
+    "_original/debank-pro-openapi-original.json"
+  ],
+  "outputs": [
+    "debank-account-api-openapi.yml",
+    "debank-app-protocol-api-openapi.yml",
+    "debank-chain-api-openapi.yml",
+    "debank-pool-api-openapi.yml",
+    "debank-protocol-api-openapi.yml",
+    "debank-token-api-openapi.yml",
+    "debank-user-api-openapi.yml",
+    "debank-wallet-api-openapi.yml",
+    "debank-cloud-api-openapi.yml",
+    "debank-official-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "debank-pro-openapi-original.json: dangling $ref: #/definitions/App%20Protocol"
+  ],
+  "warnings": [],
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "debank-pro-openapi-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. App Protocol)",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/debank-pro-openapi.yml: archived document superseded by a larger archived document",
+    "debank-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-app-protocol-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-chain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-cloud-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-official-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-pool-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-protocol-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "debank-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

@@ -105,6 +105,8 @@ paths:
           - frax
       tags:
       - Chain
+      summary: Get chain
+      x-summary-source: derived
   /v1/chain/list:
     get:
       responses:
@@ -120,6 +122,8 @@ paths:
       operationId: get_chain_list
       tags:
       - Chain
+      summary: Get chain list
+      x-summary-source: derived
 components:
   schemas:
     Chain:

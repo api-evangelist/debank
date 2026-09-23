@@ -18,6 +18,8 @@ paths:
       operationId: post_group_send_api_view
       tags:
       - official
+      summary: Post group send api view
+      x-summary-source: derived
   /v1/official/message/send:
     post:
       responses:
@@ -26,6 +28,8 @@ paths:
       operationId: post_message_send_api_view
       tags:
       - official
+      summary: Post message send api view
+      x-summary-source: derived
 components:
   securitySchemes:
     accessKey:

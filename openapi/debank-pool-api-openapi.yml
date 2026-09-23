@@ -36,6 +36,8 @@ paths:
           type: string
       tags:
       - Pool
+      summary: Get pool
+      x-summary-source: derived
 components:
   schemas:
     Pool:

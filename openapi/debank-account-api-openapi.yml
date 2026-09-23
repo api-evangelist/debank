@@ -24,6 +24,8 @@ paths:
       operationId: get_unit_api_list
       tags:
       - Account
+      summary: Get unit api list
+      x-summary-source: derived
 components:
   schemas:
     Stat:

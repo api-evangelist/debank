@@ -26,6 +26,8 @@ paths:
       operationId: get_app_protocol_list
       tags:
       - App Protocol
+      summary: Get app protocol list
+      x-summary-source: derived
 components:
   securitySchemes:
     accessKey:
