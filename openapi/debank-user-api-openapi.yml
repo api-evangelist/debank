@@ -1202,81 +1202,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserApp:
-      properties:
-        id:
-          type: string
-          description: app id
-          example: hyperliquid
-        name:
-          type: string
-          example: Hyperliquid
-        logo_url:
-          type: string
-          example: https://static.debank.com/image/project/logo_url/arb_hyperliquid/98dcfcb24e1ec2ab0da74679e0bfa0bb.png
-        site_url:
-          type: string
-          description: Prioritize websites that can be interacted with, not official websites
-          example: https://app.hyperliquid.xyz
-        has_supported_portfolio:
-          type: boolean
-          description: Is portfolio already supported
-          example: true
-        portfolio_item_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/PortfolioItem'
-      type: object
-    UserTokenAuthorized:
-      properties:
-        id:
-          type: string
-          description: contract id
-          example: '0xc1330acbbce97cb9695b7ee161c0f95b875a8b0f'
-        name:
-          type: string
-          description: contract name
-          example: One Eth
-        symbol:
-          type: string
-          description: contract symbol
-          example: ONE
-        logo_url:
-          type: string
-          description: contract logo_url
-          example: ''
-        chain:
-          type: string
-          description: chain
-          example: eth
-        price:
-          type: number
-          description: native token price of the chain
-          example: 2579.51594392348
-        balance:
-          type: number
-          description: balance of the chain
-          example: 0.09901859967795691
-        sum_exposure_usd:
-          type: number
-          description: exposure value
-          example: 255.4200566142662
-        exposure_balance:
-          type: number
-          description: exposure amount
-          example: 0.09901859967795691
-        spenders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Spenders'
-      type: object
-    UserUsdValue:
-      properties:
-        usd_value:
-          type: number
-          description: the balance of the account
-          example: '12000.123'
-      type: object
     UserTotalBalance:
       properties:
         total_usd_value:
@@ -1288,6 +1213,20 @@ components:
           items:
             $ref: '#/components/schemas/NewChain'
       type: object
+    sends:
+      properties:
+        amount:
+          type: number
+          example: 0.1
+        to_addr:
+          type: string
+          description: to_addr
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+        token_id:
+          type: string
+          description: token_id
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      type: object
     NetCurve:
       properties:
         timestamp:
@@ -1298,6 +1237,112 @@ components:
           type: number
           description: USD value
           example: '12000.123'
+      type: object
+    token_approve:
+      properties:
+        value:
+          type: number
+          example: 0.1
+        spender:
+          type: string
+          description: spender
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+        token_id:
+          type: string
+          description: token_id
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      type: object
+    attributes:
+      properties:
+        trait_type:
+          type: string
+          description: trait_type
+          example: Artist
+        value:
+          type: object
+          example: SpaceTurtleShip
+      type: object
+    UserProtocol:
+      properties:
+        id:
+          type: string
+          description: protocol id
+          example: compound
+        chain:
+          type: string
+          description: chain name
+          example: eth
+        name:
+          type: string
+          example: Compound
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+        site_url:
+          type: string
+          description: Prioritize websites that can be interacted with, not official websites
+          example: https://app.compound.finance
+        has_supported_portfolio:
+          type: boolean
+          description: Is portfolio already supported
+          example: true
+        tvl:
+          type: integer
+          description: User deposit value in this protocol
+          example: 10000
+        asset_usd_value:
+          type: number
+          description: Asset USD value
+          example: '12000.123'
+        debt_usd_value:
+          type: number
+          description: Debt USD value
+          example: '12000.123'
+        net_usd_value:
+          type: number
+          description: Net asset USD value
+          example: '12000.123'
+      type: object
+    PortfolioItem:
+      properties:
+        stats:
+          $ref: '#/components/schemas/stats'
+        update_at:
+          type: number
+          description: Update time
+          example: 1617476353.1
+        name:
+          type: string
+          description: name
+          example: Staked
+        detail_types:
+          type: array
+          items:
+            type: string
+            description: type
+            example: Common
+        detail:
+          type: object
+          description: refer to https://docs.open.debank.com/en/reference/api-models/portfolioitemobject to get detail
+        proxy_detail:
+          type: object
+          description: refer to https://docs.open.debank.com/en/reference/api-models/portfolioitemobject to get detail
+      type: object
+    UserHistory:
+      properties:
+        cate_dict:
+          type: object
+          description: cate_dict
+        history_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/history_list'
+        project_dict:
+          type: object
+          description: project dict
+        token_dict:
+          type: object
+          description: token dict
       type: object
     UserToken:
       properties:
@@ -1379,6 +1424,195 @@ components:
           description: 'Whether or not the chain support token balance '
           example: true
       type: object
+    newToken2:
+      properties:
+        id:
+          type: string
+          description: Ethereum Address or native token id
+          example: '0xdac17f958d2ee523a2206206994597c13d831ec7'
+        chain:
+          type: string
+          description: Chain Name
+          example: eth
+        name:
+          type: string
+          example: Tether USD
+        symbol:
+          type: string
+          example: USDT
+        display_symbol:
+          type: string
+          example: USDT
+        optimized_symbol:
+          type: string
+          example: USDT
+        decimals:
+          type: integer
+          example: 6
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/token/logo_url/0xdac17f958d2ee523a2206206994597c13d831ec7/3c1a718331e468abe1fc2ebe319f6c77.png
+        is_verified:
+          type: boolean
+          example: true
+        is_core:
+          type: boolean
+          example: true
+        price:
+          type: number
+          description: USD price.Price of 0 means no data
+          example: 1.01
+        time_at:
+          type: integer
+          description: The timestamp when the current token was deployed on the blockchain.
+          example: 1511829681
+        amount:
+          type: number
+          description: amount
+          example: 0.0178
+      type: object
+    UserSimpleProtocol:
+      properties:
+        id:
+          type: string
+          description: protocol id
+          example: compound
+        chain:
+          type: string
+          description: chain name
+          example: eth
+        name:
+          type: string
+          example: Compound
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+        site_url:
+          type: string
+          description: Prioritize websites that can be interacted with, not official websites
+          example: https://app.compound.finance
+        has_supported_portfolio:
+          type: boolean
+          description: Is portfolio already supported
+          example: true
+        tvl:
+          type: integer
+          description: User deposit value in this protocol
+          example: 10000
+        asset_usd_value:
+          type: number
+          description: Asset USD value
+          example: '12000.123'
+        debt_usd_value:
+          type: number
+          description: Debt USD value
+          example: '12000.123'
+        net_usd_value:
+          type: number
+          description: Net asset USD value
+          example: '12000.123'
+      type: object
+    nft_tokens:
+      properties:
+        id:
+          type: string
+          description: id
+          example: defc948fbe6d3b138b49bf981e276f0b
+        contract_id:
+          type: string
+          description: contract_id
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+        inner_id:
+          type: string
+          description: inner_id
+          example: '55575360221028374465659771733000318579577403829328624053715758637886677712897'
+        chain:
+          type: string
+          description: chain
+          example: eth
+        name:
+          type: string
+          description: name
+          example: A New Era has begun
+        symbol:
+          type: string
+          description: symbol
+          example: UNI-V3-POS
+        total_supply:
+          type: integer
+          description: total_supply
+          example: 1000
+        description:
+          type: string
+          description: description
+          example: '3 of 9
+
+
+            On February 8, 2021'
+        content_type:
+          type: string
+          description: content_type
+          example: image_url
+        content:
+          type: string
+          description: content
+          example: https://lh3.googleusercontent.com/WQnK8JxSSPj5YIxegh9iaprMaMmv-JswrcnTp9Mi5PXKDWmigkOzTBBIAkhdXtLPe7EwIe6Q1gi2gdtLzV08d2y67rMVTHx0Ei0S
+        detail_url:
+          type: string
+          description: detail_url
+          example: https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/55575360221028374465659771733000318579577403829328624053715758637886677712897
+        contract_name:
+          type: string
+          description: contract_name
+          example: OpenSea Shared Storefront
+        is_erc1155:
+          type: boolean
+          description: is_erc1155
+          default: false
+          example: true
+        is_erc721:
+          type: boolean
+          description: is_erc721
+          default: false
+        amount:
+          type: string
+          description: amount
+          example: '1'
+        spenders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Spenders'
+      type: object
+    tx:
+      properties:
+        eth_gas_fee:
+          type: number
+          example: 0.002296035
+        usd_gas_fee:
+          type: number
+          example: 0.002296035
+        value:
+          type: number
+          example: 0.002296035
+        from_addr:
+          type: string
+          description: from_addr
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+        to_addr:
+          type: string
+          description: to_addr
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+        name:
+          type: string
+          example: transfer
+        status:
+          type: integer
+          example: 1
+        params:
+          type: array
+          items:
+            type: string
+      type: object
     UserNft:
       properties:
         id:
@@ -1455,222 +1689,152 @@ components:
         pay_token:
           $ref: '#/components/schemas/newToken2'
       type: object
-    UserHistory:
-      properties:
-        cate_dict:
-          type: object
-          description: cate_dict
-        history_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/history_list'
-        project_dict:
-          type: object
-          description: project dict
-        token_dict:
-          type: object
-          description: token dict
-      type: object
-    nft_tokens:
+    Protocol2:
       properties:
         id:
           type: string
-          description: id
-          example: defc948fbe6d3b138b49bf981e276f0b
-        contract_id:
+          description: contract id
+          example: uniswap3
+        name:
           type: string
-          description: contract_id
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-        inner_id:
+          description: contract name
+          example: Uniswap V3
+        logo_url:
           type: string
-          description: inner_id
-          example: '55575360221028374465659771733000318579577403829328624053715758637886677712897'
+          description: contract logo_url
+          example: https://static.debank.com/image/project/logo_url/uniswap3/87a541b3b83b041c8d12119e5a0d19f0.png
         chain:
           type: string
           description: chain
           example: eth
+      type: object
+    history_list:
+      properties:
+        cate_id:
+          type: string
+          description: cate id
+          example: approve
+        id:
+          type: string
+          description: tx hash
+          example: '0x403d4d104637442ed98132157319b6a5771a402551c7a1f9a0cbebea201c9930'
+        project_id:
+          type: string
+          description: project id
+          example: uniswap
+        receives:
+          type: array
+          items:
+            $ref: '#/components/schemas/receives'
+        sends:
+          type: array
+          items:
+            $ref: '#/components/schemas/sends'
+        token_approve:
+          type: array
+          items:
+            $ref: '#/components/schemas/token_approve'
+        time_at:
+          type: integer
+          example: 1646634891
+        tx:
+          $ref: '#/components/schemas/tx'
+      type: object
+    Protocol:
+      properties:
+        id:
+          type: string
+          description: protocol id
+          example: compound
+        chain:
+          type: string
+          description: chain name
+          example: eth
         name:
           type: string
-          description: name
-          example: A New Era has begun
+          example: Compound
+        logo_url:
+          type: string
+          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+        site_url:
+          type: string
+          description: Prioritize websites that can be interacted with, not official websites
+          example: https://app.compound.finance
+        has_supported_portfolio:
+          type: boolean
+          description: Is portfolio already supported
+          example: true
+        tvl:
+          type: integer
+          description: User deposit value in this protocol
+          example: 10000
+      type: object
+    stats:
+      properties:
+        asset_usd_value:
+          type: number
+          description: Asset USD value
+          example: '12000.123'
+        debt_usd_value:
+          type: number
+          description: Debt USD value
+          example: '12000.123'
+        net_usd_value:
+          type: number
+          description: Net asset USD value
+          example: '12000.123'
+      type: object
+    Spenders:
+      properties:
+        id:
+          type: string
+          description: id
+          example: '0x3bdf1977d87edad8e0617efcea958f6d43a4c30e'
+        protocol:
+          $ref: '#/components/schemas/Protocol2'
+      type: object
+    UserTokenAuthorized:
+      properties:
+        id:
+          type: string
+          description: contract id
+          example: '0xc1330acbbce97cb9695b7ee161c0f95b875a8b0f'
+        name:
+          type: string
+          description: contract name
+          example: One Eth
         symbol:
           type: string
-          description: symbol
-          example: UNI-V3-POS
-        total_supply:
-          type: integer
-          description: total_supply
-          example: 1000
-        description:
+          description: contract symbol
+          example: ONE
+        logo_url:
           type: string
-          description: description
-          example: '3 of 9
-
-
-            On February 8, 2021'
-        content_type:
+          description: contract logo_url
+          example: ''
+        chain:
           type: string
-          description: content_type
-          example: image_url
-        content:
-          type: string
-          description: content
-          example: https://lh3.googleusercontent.com/WQnK8JxSSPj5YIxegh9iaprMaMmv-JswrcnTp9Mi5PXKDWmigkOzTBBIAkhdXtLPe7EwIe6Q1gi2gdtLzV08d2y67rMVTHx0Ei0S
-        detail_url:
-          type: string
-          description: detail_url
-          example: https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/55575360221028374465659771733000318579577403829328624053715758637886677712897
-        contract_name:
-          type: string
-          description: contract_name
-          example: OpenSea Shared Storefront
-        is_erc1155:
-          type: boolean
-          description: is_erc1155
-          default: false
-          example: true
-        is_erc721:
-          type: boolean
-          description: is_erc721
-          default: false
-        amount:
-          type: string
-          description: amount
-          example: '1'
+          description: chain
+          example: eth
+        price:
+          type: number
+          description: native token price of the chain
+          example: 2579.51594392348
+        balance:
+          type: number
+          description: balance of the chain
+          example: 0.09901859967795691
+        sum_exposure_usd:
+          type: number
+          description: exposure value
+          example: 255.4200566142662
+        exposure_balance:
+          type: number
+          description: exposure amount
+          example: 0.09901859967795691
         spenders:
           type: array
           items:
             $ref: '#/components/schemas/Spenders'
-      type: object
-    sends:
-      properties:
-        amount:
-          type: number
-          example: 0.1
-        to_addr:
-          type: string
-          description: to_addr
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-        token_id:
-          type: string
-          description: token_id
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-      type: object
-    token_approve:
-      properties:
-        value:
-          type: number
-          example: 0.1
-        spender:
-          type: string
-          description: spender
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-        token_id:
-          type: string
-          description: token_id
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-      type: object
-    PortfolioItem:
-      properties:
-        stats:
-          $ref: '#/components/schemas/stats'
-        update_at:
-          type: number
-          description: Update time
-          example: 1617476353.1
-        name:
-          type: string
-          description: name
-          example: Staked
-        detail_types:
-          type: array
-          items:
-            type: string
-            description: type
-            example: Common
-        detail:
-          type: object
-          description: refer to https://docs.open.debank.com/en/reference/api-models/portfolioitemobject to get detail
-        proxy_detail:
-          type: object
-          description: refer to https://docs.open.debank.com/en/reference/api-models/portfolioitemobject to get detail
-      type: object
-    newToken2:
-      properties:
-        id:
-          type: string
-          description: Ethereum Address or native token id
-          example: '0xdac17f958d2ee523a2206206994597c13d831ec7'
-        chain:
-          type: string
-          description: Chain Name
-          example: eth
-        name:
-          type: string
-          example: Tether USD
-        symbol:
-          type: string
-          example: USDT
-        display_symbol:
-          type: string
-          example: USDT
-        optimized_symbol:
-          type: string
-          example: USDT
-        decimals:
-          type: integer
-          example: 6
-        logo_url:
-          type: string
-          example: https://static.debank.com/image/token/logo_url/0xdac17f958d2ee523a2206206994597c13d831ec7/3c1a718331e468abe1fc2ebe319f6c77.png
-        is_verified:
-          type: boolean
-          example: true
-        is_core:
-          type: boolean
-          example: true
-        price:
-          type: number
-          description: USD price.Price of 0 means no data
-          example: 1.01
-        time_at:
-          type: integer
-          description: The timestamp when the current token was deployed on the blockchain.
-          example: 1511829681
-        amount:
-          type: number
-          description: amount
-          example: 0.0178
-      type: object
-    tx:
-      properties:
-        eth_gas_fee:
-          type: number
-          example: 0.002296035
-        usd_gas_fee:
-          type: number
-          example: 0.002296035
-        value:
-          type: number
-          example: 0.002296035
-        from_addr:
-          type: string
-          description: from_addr
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-        to_addr:
-          type: string
-          description: to_addr
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-        name:
-          type: string
-          example: transfer
-        status:
-          type: integer
-          example: 1
-        params:
-          type: array
-          items:
-            type: string
       type: object
     nft_contracts:
       properties:
@@ -1720,215 +1884,37 @@ components:
           description: the amount of user nft tokens
           example: '12000'
       type: object
-    UserSimpleProtocol:
+    UserUsdValue:
+      properties:
+        usd_value:
+          type: number
+          description: the balance of the account
+          example: '12000.123'
+      type: object
+    UserApp:
       properties:
         id:
           type: string
-          description: protocol id
-          example: compound
-        chain:
-          type: string
-          description: chain name
-          example: eth
+          description: app id
+          example: hyperliquid
         name:
           type: string
-          example: Compound
+          example: Hyperliquid
         logo_url:
           type: string
-          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
+          example: https://static.debank.com/image/project/logo_url/arb_hyperliquid/98dcfcb24e1ec2ab0da74679e0bfa0bb.png
         site_url:
           type: string
           description: Prioritize websites that can be interacted with, not official websites
-          example: https://app.compound.finance
+          example: https://app.hyperliquid.xyz
         has_supported_portfolio:
           type: boolean
           description: Is portfolio already supported
           example: true
-        tvl:
-          type: integer
-          description: User deposit value in this protocol
-          example: 10000
-        asset_usd_value:
-          type: number
-          description: Asset USD value
-          example: '12000.123'
-        debt_usd_value:
-          type: number
-          description: Debt USD value
-          example: '12000.123'
-        net_usd_value:
-          type: number
-          description: Net asset USD value
-          example: '12000.123'
-      type: object
-    receives:
-      properties:
-        amount:
-          type: number
-          example: 1
-        from_addr:
-          type: string
-          description: from_addr
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-        token_id:
-          type: string
-          description: token_id
-          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
-      type: object
-    Protocol:
-      properties:
-        id:
-          type: string
-          description: protocol id
-          example: compound
-        chain:
-          type: string
-          description: chain name
-          example: eth
-        name:
-          type: string
-          example: Compound
-        logo_url:
-          type: string
-          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
-        site_url:
-          type: string
-          description: Prioritize websites that can be interacted with, not official websites
-          example: https://app.compound.finance
-        has_supported_portfolio:
-          type: boolean
-          description: Is portfolio already supported
-          example: true
-        tvl:
-          type: integer
-          description: User deposit value in this protocol
-          example: 10000
-      type: object
-    UserProtocol:
-      properties:
-        id:
-          type: string
-          description: protocol id
-          example: compound
-        chain:
-          type: string
-          description: chain name
-          example: eth
-        name:
-          type: string
-          example: Compound
-        logo_url:
-          type: string
-          example: https://static.debank.com/image/project/logo_url/compound/b4b9c8de20952846a1c9dfcded47d0db.png
-        site_url:
-          type: string
-          description: Prioritize websites that can be interacted with, not official websites
-          example: https://app.compound.finance
-        has_supported_portfolio:
-          type: boolean
-          description: Is portfolio already supported
-          example: true
-        tvl:
-          type: integer
-          description: User deposit value in this protocol
-          example: 10000
-        asset_usd_value:
-          type: number
-          description: Asset USD value
-          example: '12000.123'
-        debt_usd_value:
-          type: number
-          description: Debt USD value
-          example: '12000.123'
-        net_usd_value:
-          type: number
-          description: Net asset USD value
-          example: '12000.123'
-      type: object
-    history_list:
-      properties:
-        cate_id:
-          type: string
-          description: cate id
-          example: approve
-        id:
-          type: string
-          description: tx hash
-          example: '0x403d4d104637442ed98132157319b6a5771a402551c7a1f9a0cbebea201c9930'
-        project_id:
-          type: string
-          description: project id
-          example: uniswap
-        receives:
+        portfolio_item_list:
           type: array
           items:
-            $ref: '#/components/schemas/receives'
-        sends:
-          type: array
-          items:
-            $ref: '#/components/schemas/sends'
-        token_approve:
-          type: array
-          items:
-            $ref: '#/components/schemas/token_approve'
-        time_at:
-          type: integer
-          example: 1646634891
-        tx:
-          $ref: '#/components/schemas/tx'
-      type: object
-    Spenders:
-      properties:
-        id:
-          type: string
-          description: id
-          example: '0x3bdf1977d87edad8e0617efcea958f6d43a4c30e'
-        protocol:
-          $ref: '#/components/schemas/Protocol2'
-      type: object
-    attributes:
-      properties:
-        trait_type:
-          type: string
-          description: trait_type
-          example: Artist
-        value:
-          type: object
-          example: SpaceTurtleShip
-      type: object
-    stats:
-      properties:
-        asset_usd_value:
-          type: number
-          description: Asset USD value
-          example: '12000.123'
-        debt_usd_value:
-          type: number
-          description: Debt USD value
-          example: '12000.123'
-        net_usd_value:
-          type: number
-          description: Net asset USD value
-          example: '12000.123'
-      type: object
-    Protocol2:
-      properties:
-        id:
-          type: string
-          description: contract id
-          example: uniswap3
-        name:
-          type: string
-          description: contract name
-          example: Uniswap V3
-        logo_url:
-          type: string
-          description: contract logo_url
-          example: https://static.debank.com/image/project/logo_url/uniswap3/87a541b3b83b041c8d12119e5a0d19f0.png
-        chain:
-          type: string
-          description: chain
-          example: eth
+            $ref: '#/components/schemas/PortfolioItem'
       type: object
     NewChain:
       properties:
@@ -1962,6 +1948,20 @@ components:
           type: number
           description: the balance of the account
           example: '12000.123'
+      type: object
+    receives:
+      properties:
+        amount:
+          type: number
+          example: 1
+        from_addr:
+          type: string
+          description: from_addr
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
+        token_id:
+          type: string
+          description: token_id
+          example: '0x495f947276749ce646f68ac8c248420045cb7b5e'
       type: object
   securitySchemes:
     accessKey:
