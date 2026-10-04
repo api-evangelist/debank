@@ -169,6 +169,8 @@ apis:
   humanURL: https://docs.cloud.debank.com/en/readme/open-api
   baseURL: https://pro-openapi.debank.com
   tags:
+  - Official
+  tags_raw:
   - official
   properties:
   - type: OpenAPI
